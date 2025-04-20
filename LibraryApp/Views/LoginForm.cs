@@ -25,6 +25,13 @@ namespace LibraryApp.Forms
                 MessageBox.Show("Usuário e/ou senha inválido(s)", "Login");
                 return;
             }
+
+            this.Hide();
+
+            var libraryForm = new LibraryForm();
+            libraryForm.ShowDialog();
+
+            this.Close();
         }
 
         private bool FormIsValid()

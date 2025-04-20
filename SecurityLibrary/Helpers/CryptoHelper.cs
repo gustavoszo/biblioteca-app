@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Security.Cryptography;
-using System.Text;
 using SecurityLibrary.Helpers;
 
 namespace LibraryApp.Security
