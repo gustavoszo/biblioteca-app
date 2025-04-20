@@ -1,3 +1,6 @@
+using LibraryApp.Forms;
+using LibraryApp.Security;
+
 namespace LibraryApp
 {
     internal static class Program
@@ -11,7 +14,7 @@ namespace LibraryApp
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new LibraryForm());
+            Application.Run(new LoginForm());
         }
     }
 }
