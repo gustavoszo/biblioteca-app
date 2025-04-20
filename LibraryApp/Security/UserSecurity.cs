@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text.Json;
+using LibraryApp.Helpers;
 using LibraryApp.Models;
 using SecurityLibrary.Helpers;
 
@@ -7,10 +8,7 @@ namespace LibraryApp.Security
 {
     internal static class UserSecurity
     {
-        private static string _userFilePath = Path.Combine(
-            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-            "LibraryApp", "user.enc"
-        );
+        private static string _userFilePath = AppPathsHelper.UserFilePath;
 
         private static AesKeyInfo _aesKeyInfo;
 
@@ -22,10 +20,19 @@ namespace LibraryApp.Security
         
         public static bool IsValidCredential(string username, string password)
         {
-            var credentials = CryptoHelper.DecryptFile(_userFilePath, _aesKeyInfo);
-            var admin = JsonSerializer.Deserialize<Admin>(credentials);
+            try
+            {
+                var credentials = CryptoHelper.DecryptFile(_userFilePath, _aesKeyInfo);
+                var admin = JsonSerializer.Deserialize<Admin>(credentials);
 
-            return admin.Username.Equals(username) && HashHelper.VerifyPassword(password, admin.Hash, admin.Salt);
+                if (admin == null) return false;
+
+                return admin.Username.Equals(username) && HashHelper.VerifyPassword(password, admin.Hash, admin.Salt);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Falha ao carregar as credenciais do administrador.", ex);
+            }
         }
     }
 }
