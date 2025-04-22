@@ -29,10 +29,7 @@ namespace LibraryApp.Forms
                 return;
             }
 
-            this.Hide();
-
-            InitializeLibraryView();
-
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
@@ -46,17 +43,5 @@ namespace LibraryApp.Forms
             return UserSecurity.IsValidCredential(usernameTextBox.Text, passwordTextBox.Text);
         }
 
-        private void InitializeLibraryView()
-        {
-            var connectionString = DbSecurity.LoadDatabaseConfig().BuildConnectionString();
-
-            var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
-            optionsBuilder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
-
-            AppDbContext dbContext = new AppDbContext(optionsBuilder.Options);
-
-            var libraryForm = new LibraryForm(dbContext);
-            libraryForm.ShowDialog();
-        }
     }
 }

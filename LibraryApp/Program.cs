@@ -1,5 +1,7 @@
+using LibraryApp.Data;
 using LibraryApp.Forms;
 using LibraryApp.Security;
+using Microsoft.EntityFrameworkCore;
 
 namespace LibraryApp
 {
@@ -14,7 +16,19 @@ namespace LibraryApp
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new LoginForm());
+
+            using var loginForm = new LoginForm();
+            loginForm.ShowDialog();
+
+            if (loginForm.DialogResult == DialogResult.OK)
+            {
+                var connectionString = DbSecurity.LoadDatabaseConfig().BuildConnectionString();
+                var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
+                optionsBuilder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+                var dbContext = new AppDbContext(optionsBuilder.Options);
+
+                Application.Run(new LibraryForm(dbContext));
+            }
         }
     }
 }

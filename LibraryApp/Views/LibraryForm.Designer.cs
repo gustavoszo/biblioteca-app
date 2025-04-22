@@ -32,25 +32,25 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            tableLayoutPanel1 = new TableLayoutPanel();
+            mainTableLayoutPanel = new TableLayoutPanel();
             toolStrip1 = new ToolStrip();
             exitButton = new ToolStripButton();
             tabControl = new TabControl();
             leaseTabPage = new TabPage();
             bookTabPage = new TabPage();
             tableLayoutPanel2 = new TableLayoutPanel();
-            materialButton1 = new MaterialSkin.Controls.MaterialButton();
+            addBookButton = new MaterialSkin.Controls.MaterialButton();
             tableLayoutPanel3 = new TableLayoutPanel();
             advancedDataGridView = new Zuby.ADGV.AdvancedDataGridView();
-            searchToolBar = new Zuby.ADGV.AdvancedDataGridViewSearchToolBar();
-            miniToolStrip = new Zuby.ADGV.AdvancedDataGridViewSearchToolBar();
             TitleColumn = new DataGridViewTextBoxColumn();
             AuthorColumn = new DataGridViewTextBoxColumn();
             PublisherColumn = new DataGridViewTextBoxColumn();
             isbnColumn = new DataGridViewTextBoxColumn();
             totalColumn = new DataGridViewTextBoxColumn();
             quantity_availableColumn = new DataGridViewTextBoxColumn();
-            tableLayoutPanel1.SuspendLayout();
+            searchToolBar = new Zuby.ADGV.AdvancedDataGridViewSearchToolBar();
+            miniToolStrip = new Zuby.ADGV.AdvancedDataGridViewSearchToolBar();
+            mainTableLayoutPanel.SuspendLayout();
             toolStrip1.SuspendLayout();
             tabControl.SuspendLayout();
             bookTabPage.SuspendLayout();
@@ -59,32 +59,31 @@
             ((System.ComponentModel.ISupportInitialize)advancedDataGridView).BeginInit();
             SuspendLayout();
             // 
-            // tableLayoutPanel1
+            // mainTableLayoutPanel
             // 
-            tableLayoutPanel1.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
-            tableLayoutPanel1.ColumnCount = 1;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.05269F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 49.94731F));
-            tableLayoutPanel1.Controls.Add(toolStrip1, 0, 1);
-            tableLayoutPanel1.Controls.Add(tabControl, 0, 0);
-            tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(3, 64);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 1;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 94.36364F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 5.63636351F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new Size(955, 508);
-            tableLayoutPanel1.TabIndex = 0;
+            mainTableLayoutPanel.ColumnCount = 1;
+            mainTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.05269F));
+            mainTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 49.94731F));
+            mainTableLayoutPanel.Controls.Add(toolStrip1, 0, 1);
+            mainTableLayoutPanel.Controls.Add(tabControl, 0, 0);
+            mainTableLayoutPanel.Dock = DockStyle.Fill;
+            mainTableLayoutPanel.Location = new Point(3, 64);
+            mainTableLayoutPanel.Name = "mainTableLayoutPanel";
+            mainTableLayoutPanel.RowCount = 1;
+            mainTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 94.6850357F));
+            mainTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 5.31496048F));
+            mainTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            mainTableLayoutPanel.Size = new Size(955, 508);
+            mainTableLayoutPanel.TabIndex = 0;
             // 
             // toolStrip1
             // 
             toolStrip1.Dock = DockStyle.Bottom;
             toolStrip1.ImageScalingSize = new Size(20, 20);
             toolStrip1.Items.AddRange(new ToolStripItem[] { exitButton });
-            toolStrip1.Location = new Point(1, 478);
+            toolStrip1.Location = new Point(0, 481);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(953, 29);
+            toolStrip1.Size = new Size(955, 27);
             toolStrip1.TabIndex = 5;
             toolStrip1.Text = "toolStrip1";
             // 
@@ -96,7 +95,7 @@
             exitButton.Image = (Image)resources.GetObject("exitButton.Image");
             exitButton.ImageTransparentColor = Color.Magenta;
             exitButton.Name = "exitButton";
-            exitButton.Size = new Size(42, 26);
+            exitButton.Size = new Size(42, 24);
             exitButton.Text = "Sair";
             // 
             // tabControl
@@ -105,10 +104,10 @@
             tabControl.Controls.Add(bookTabPage);
             tabControl.Dock = DockStyle.Fill;
             tabControl.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tabControl.Location = new Point(4, 4);
+            tabControl.Location = new Point(3, 3);
             tabControl.Name = "tabControl";
             tabControl.SelectedIndex = 0;
-            tabControl.Size = new Size(947, 470);
+            tabControl.Size = new Size(949, 475);
             tabControl.TabIndex = 1;
             // 
             // leaseTabPage
@@ -117,7 +116,7 @@
             leaseTabPage.Location = new Point(4, 37);
             leaseTabPage.Name = "leaseTabPage";
             leaseTabPage.Padding = new Padding(3);
-            leaseTabPage.Size = new Size(780, 469);
+            leaseTabPage.Size = new Size(941, 434);
             leaseTabPage.TabIndex = 0;
             leaseTabPage.Text = "Locação";
             leaseTabPage.UseVisualStyleBackColor = true;
@@ -128,7 +127,7 @@
             bookTabPage.Location = new Point(4, 37);
             bookTabPage.Name = "bookTabPage";
             bookTabPage.Padding = new Padding(3);
-            bookTabPage.Size = new Size(939, 429);
+            bookTabPage.Size = new Size(941, 434);
             bookTabPage.TabIndex = 1;
             bookTabPage.Text = "Livros";
             bookTabPage.UseVisualStyleBackColor = true;
@@ -139,7 +138,7 @@
             tableLayoutPanel2.ColumnCount = 1;
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Controls.Add(materialButton1, 0, 0);
+            tableLayoutPanel2.Controls.Add(addBookButton, 0, 0);
             tableLayoutPanel2.Controls.Add(tableLayoutPanel3, 0, 1);
             tableLayoutPanel2.Dock = DockStyle.Fill;
             tableLayoutPanel2.Font = new Font("Segoe UI", 9F);
@@ -149,28 +148,28 @@
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 11.6883116F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 88.31169F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 29F));
-            tableLayoutPanel2.Size = new Size(933, 423);
+            tableLayoutPanel2.Size = new Size(935, 428);
             tableLayoutPanel2.TabIndex = 0;
             // 
-            // materialButton1
+            // addBookButton
             // 
-            materialButton1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            materialButton1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            materialButton1.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            materialButton1.Depth = 0;
-            materialButton1.HighEmphasis = true;
-            materialButton1.Icon = null;
-            materialButton1.Location = new Point(4, 7);
-            materialButton1.Margin = new Padding(4, 6, 4, 6);
-            materialButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            materialButton1.Name = "materialButton1";
-            materialButton1.NoAccentTextColor = Color.Empty;
-            materialButton1.Size = new Size(143, 36);
-            materialButton1.TabIndex = 0;
-            materialButton1.Text = "Adicionar livro";
-            materialButton1.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            materialButton1.UseAccentColor = false;
-            materialButton1.UseVisualStyleBackColor = true;
+            addBookButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            addBookButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            addBookButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            addBookButton.Depth = 0;
+            addBookButton.HighEmphasis = true;
+            addBookButton.Icon = null;
+            addBookButton.Location = new Point(4, 8);
+            addBookButton.Margin = new Padding(4, 6, 4, 6);
+            addBookButton.MouseState = MaterialSkin.MouseState.HOVER;
+            addBookButton.Name = "addBookButton";
+            addBookButton.NoAccentTextColor = Color.Empty;
+            addBookButton.Size = new Size(143, 36);
+            addBookButton.TabIndex = 0;
+            addBookButton.Text = "Adicionar livro";
+            addBookButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            addBookButton.UseAccentColor = false;
+            addBookButton.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel3
             // 
@@ -181,12 +180,12 @@
             tableLayoutPanel3.Controls.Add(advancedDataGridView, 0, 1);
             tableLayoutPanel3.Controls.Add(searchToolBar, 0, 0);
             tableLayoutPanel3.Dock = DockStyle.Fill;
-            tableLayoutPanel3.Location = new Point(3, 52);
+            tableLayoutPanel3.Location = new Point(3, 53);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 2;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 6.4837904F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 93.51621F));
-            tableLayoutPanel3.Size = new Size(927, 368);
+            tableLayoutPanel3.Size = new Size(929, 372);
             tableLayoutPanel3.TabIndex = 3;
             // 
             // advancedDataGridView
@@ -229,42 +228,9 @@
             advancedDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             advancedDataGridView.RowHeadersVisible = false;
             advancedDataGridView.RowHeadersWidth = 51;
-            advancedDataGridView.Size = new Size(919, 336);
+            advancedDataGridView.Size = new Size(921, 340);
             advancedDataGridView.SortStringChangedInvokeBeforeDatasourceUpdate = true;
             advancedDataGridView.TabIndex = 3;
-            // 
-            // searchToolBar
-            // 
-            searchToolBar.AllowMerge = false;
-            searchToolBar.Dock = DockStyle.Fill;
-            searchToolBar.GripStyle = ToolStripGripStyle.Hidden;
-            searchToolBar.ImageScalingSize = new Size(20, 20);
-            searchToolBar.Location = new Point(1, 1);
-            searchToolBar.MaximumSize = new Size(0, 27);
-            searchToolBar.MinimumSize = new Size(0, 27);
-            searchToolBar.Name = "searchToolBar";
-            searchToolBar.RenderMode = ToolStripRenderMode.Professional;
-            searchToolBar.Size = new Size(925, 27);
-            searchToolBar.TabIndex = 0;
-            searchToolBar.Text = "advancedDataGridViewSearchToolBar1";
-            // 
-            // miniToolStrip
-            // 
-            miniToolStrip.AccessibleName = "Nova seleção de item";
-            miniToolStrip.AccessibleRole = AccessibleRole.ButtonDropDown;
-            miniToolStrip.AllowMerge = false;
-            miniToolStrip.AutoSize = false;
-            miniToolStrip.CanOverflow = false;
-            miniToolStrip.Dock = DockStyle.None;
-            miniToolStrip.GripStyle = ToolStripGripStyle.Hidden;
-            miniToolStrip.ImageScalingSize = new Size(20, 20);
-            miniToolStrip.Location = new Point(885, 1);
-            miniToolStrip.MaximumSize = new Size(0, 27);
-            miniToolStrip.MinimumSize = new Size(0, 27);
-            miniToolStrip.Name = "miniToolStrip";
-            miniToolStrip.RenderMode = ToolStripRenderMode.Professional;
-            miniToolStrip.Size = new Size(927, 27);
-            miniToolStrip.TabIndex = 1;
             // 
             // TitleColumn
             // 
@@ -314,16 +280,49 @@
             quantity_availableColumn.ReadOnly = true;
             quantity_availableColumn.SortMode = DataGridViewColumnSortMode.Programmatic;
             // 
+            // searchToolBar
+            // 
+            searchToolBar.AllowMerge = false;
+            searchToolBar.Dock = DockStyle.Fill;
+            searchToolBar.GripStyle = ToolStripGripStyle.Hidden;
+            searchToolBar.ImageScalingSize = new Size(20, 20);
+            searchToolBar.Location = new Point(1, 1);
+            searchToolBar.MaximumSize = new Size(0, 27);
+            searchToolBar.MinimumSize = new Size(0, 27);
+            searchToolBar.Name = "searchToolBar";
+            searchToolBar.RenderMode = ToolStripRenderMode.Professional;
+            searchToolBar.Size = new Size(927, 27);
+            searchToolBar.TabIndex = 0;
+            searchToolBar.Text = "advancedDataGridViewSearchToolBar1";
+            // 
+            // miniToolStrip
+            // 
+            miniToolStrip.AccessibleName = "Nova seleção de item";
+            miniToolStrip.AccessibleRole = AccessibleRole.ButtonDropDown;
+            miniToolStrip.AllowMerge = false;
+            miniToolStrip.AutoSize = false;
+            miniToolStrip.CanOverflow = false;
+            miniToolStrip.Dock = DockStyle.None;
+            miniToolStrip.GripStyle = ToolStripGripStyle.Hidden;
+            miniToolStrip.ImageScalingSize = new Size(20, 20);
+            miniToolStrip.Location = new Point(885, 1);
+            miniToolStrip.MaximumSize = new Size(0, 27);
+            miniToolStrip.MinimumSize = new Size(0, 27);
+            miniToolStrip.Name = "miniToolStrip";
+            miniToolStrip.RenderMode = ToolStripRenderMode.Professional;
+            miniToolStrip.Size = new Size(927, 27);
+            miniToolStrip.TabIndex = 1;
+            // 
             // LibraryForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(961, 575);
-            Controls.Add(tableLayoutPanel1);
+            Controls.Add(mainTableLayoutPanel);
             Name = "LibraryForm";
             Text = "Biblioteca";
-            tableLayoutPanel1.ResumeLayout(false);
-            tableLayoutPanel1.PerformLayout();
+            mainTableLayoutPanel.ResumeLayout(false);
+            mainTableLayoutPanel.PerformLayout();
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
             tabControl.ResumeLayout(false);
@@ -338,13 +337,13 @@
 
         #endregion
 
-        private TableLayoutPanel tableLayoutPanel1;
+        private TableLayoutPanel mainTableLayoutPanel;
         private TabControl tabControl;
         private TabPage leaseTabPage;
         private TabPage bookTabPage;
         private TableLayoutPanel tableLayoutPanel2;
         private Zuby.ADGV.AdvancedDataGridViewSearchToolBar miniToolStrip;
-        private MaterialSkin.Controls.MaterialButton materialButton1;
+        private MaterialSkin.Controls.MaterialButton addBookButton;
         private TableLayoutPanel tableLayoutPanel3;
         private Zuby.ADGV.AdvancedDataGridView advancedDataGridView;
         private Zuby.ADGV.AdvancedDataGridViewSearchToolBar searchToolBar;
