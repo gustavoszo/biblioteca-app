@@ -192,7 +192,6 @@
             usernameLabel.Size = new Size(55, 19);
             usernameLabel.TabIndex = 2;
             usernameLabel.Text = "Usuário";
-            usernameLabel.Click += materialLabel1_Click;
             // 
             // passwordLabel
             // 

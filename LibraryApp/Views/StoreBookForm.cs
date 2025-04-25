@@ -1,4 +1,5 @@
 ﻿using System;
+using LibraryApp.Exceptions;
 using LibraryApp.Helpers;
 using LibraryApp.Models;
 using LibraryApp.Services;
@@ -52,7 +53,6 @@ namespace LibraryApp.Views
             if (_editBook != null)
             {
                 LoadBook(_editBook);
-                AdjustsFormToUpdate(_editBook);
             }
         }
 
@@ -72,14 +72,18 @@ namespace LibraryApp.Views
             {
                 try
                 {
-                    _bookService.DeleteBook(_editBook);
+                    _bookService.DeleteBookByIsbn(_editBook.ISBN);
                     MessageBox.Show($"O livro '{_editBook.Title}' foi removido!'", "Livro removido");
 
                     this.Close();
                 }
-                catch (Exception ex)
+                catch (BookValidationException ex)
                 {
                     MessageBox.Show(ex.Message, "Erro");
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Ocorreu um erro ao tentar adicionar o livro", "Erro");
                 }
             }
         }
@@ -104,9 +108,13 @@ namespace LibraryApp.Views
 
                     this.Close();
                 }
+                catch (BookValidationException ex)
+                {
+                    MessageBox.Show(ex.Message, "Erro");
+                }
                 catch (Exception)
                 {
-                    MessageBox.Show("Ocorreu um erro ao tentar adicionar o livro", "Adicionar Livro");
+                    MessageBox.Show("Ocorreu um erro ao tentar adicionar o livro", "Erro");
                 }
             }
         }
@@ -195,8 +203,6 @@ namespace LibraryApp.Views
         {
             if (book.ISBN.Length == 10)
                 isbn10RadioButton.Checked = true;
-            else
-                isbn13RadioButton.Checked = true;
 
             isbn10RadioButton.Visible = false;
             isbn13RadioButton.Visible = false;

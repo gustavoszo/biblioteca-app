@@ -14,10 +14,9 @@ namespace LibraryApp.Security
 
         static UserSecurity()
         {
-            AesKeyManager.EnsureKeyExists();    
             _aesKeyInfo = AesKeyManager.LoadKey();
         }
-        
+
         public static bool IsValidCredential(string username, string password)
         {
             try

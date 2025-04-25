@@ -31,6 +31,8 @@ namespace SecurityLibrary.Helpers
 
         public static AesKeyInfo LoadKey()
         {
+            EnsureKeyExists();
+
             string json = File.ReadAllText(_keyFilePath);
             return JsonSerializer.Deserialize<AesKeyInfo>(json);
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using LibraryApp.Data;
+using LibraryApp.Exceptions;
 using LibraryApp.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,87 +17,58 @@ namespace LibraryApp.Services
 
         public void CreateBook(Book book)
         {
-            try
-            {
-                book.QuantityAvailable = book.Total;
+            book.QuantityAvailable = book.Total;
 
-                _dbContext.Books.Add(book);
-                Commit();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            _dbContext.Books.Add(book);
+            Commit();
         }
 
         public List<Book> GetAllBooks()
         {
-            try
+            return _dbContext.Books.AsNoTracking().Select(b => new Book
             {
-                return _dbContext.Books.AsNoTracking().Select(b => new Book
-                {
-                    Title = b.Title,
-                    Author = b.Author,
-                    Publisher = b.Publisher,
-                    ISBN = b.ISBN,
-                    Total = b.Total,
-                    QuantityAvailable = b.QuantityAvailable
-                }).ToList();
-            }
-            catch (Exception)
-            {
-                return new List<Book>();
-            }
+                Title = b.Title,
+                Author = b.Author,
+                Publisher = b.Publisher,
+                ISBN = b.ISBN,
+                Total = b.Total,
+                QuantityAvailable = b.QuantityAvailable
+            }).ToList();
         }
 
         public Book? FindBookByISBN(string isbn)
         {
-            try
-            {
-                return _dbContext.Books.FirstOrDefault(b => b.ISBN == isbn);
-            }
-            catch (Exception)
-            {
-                return null;
-            }
+            return _dbContext.Books.FirstOrDefault(b => b.ISBN == isbn);
         }
 
         public void UpdateBook(Book savedBook, Book updatedBook)
         {
-            try
-            {
-                savedBook.Title = updatedBook.Title;
-                savedBook.Author = updatedBook.Author;
-                savedBook.Publisher = updatedBook.Publisher;
-                savedBook.PublishYear = updatedBook.PublishYear;
-                savedBook.Genre = updatedBook.Genre;
-                
-                savedBook.QuantityAvailable += (updatedBook.Total - savedBook.Total);
-                savedBook.Total = updatedBook.Total;
+            int booksOnLoan = savedBook.Total - savedBook.QuantityAvailable;
+            if (booksOnLoan > updatedBook.Total)
+                throw new BookValidationException($"Titulo: {savedBook.Title}\nISBN: {savedBook.ISBN}\nEste livro possui {booksOnLoan} empréstimo(s) em andamento. Portanto, não é possivel que a quantidade total de livros seja menor que a quantidade de livros emprestados");
 
-                Commit();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            savedBook.Title = updatedBook.Title;
+            savedBook.Author = updatedBook.Author;
+            savedBook.Publisher = updatedBook.Publisher;
+            savedBook.PublishYear = updatedBook.PublishYear;
+            savedBook.Genre = updatedBook.Genre;
+
+            savedBook.QuantityAvailable += (updatedBook.Total - savedBook.Total);
+            savedBook.Total = updatedBook.Total;
+
+            Commit();
         }
 
-        public void DeleteBook(Book book)
+        public void DeleteBookByIsbn(string isbn)
         {
-            try
-            {
-                if (book.Total > book.QuantityAvailable) throw new Exception(
-                    $"Titulo: {book.Title}\nISBN: {book.ISBN}\nEste livro possui empréstimos em andamento. Portanto, não é possivel realizar a remoção deste no momento."
-                    );
+            var book = FindBookByISBN(isbn);
 
-                _dbContext.Books.Remove(FindBookByISBN(book.ISBN));
-                Commit();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            if (book.Total > book.QuantityAvailable) throw new BookValidationException(
+                $"Titulo: {book.Title}\nISBN: {book.ISBN}\nEste livro possui empréstimos em andamento. Portanto, não é possivel realizar a remoção deste no momento."
+                );
+
+            _dbContext.Books.Remove(book);
+            Commit();
         }
 
         private void Commit()

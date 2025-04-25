@@ -14,7 +14,6 @@ namespace LibraryApp.Security
 
         static DbSecurity()
         {
-            AesKeyManager.EnsureKeyExists();
             _aesKeyInfo = AesKeyManager.LoadKey();
         }
 
