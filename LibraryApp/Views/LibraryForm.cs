@@ -1,20 +1,19 @@
 ﻿using System;
-using LibraryApp.Data;
 using LibraryApp.Models;
+using LibraryApp.Services;
 using LibraryApp.Views;
 using MaterialSkin.Controls;
-using Microsoft.EntityFrameworkCore;
 
 namespace LibraryApp
 {
     internal partial class LibraryForm : MaterialForm
     {
 
-        private readonly AppDbContext _dbContext;
+        private readonly BookService _bookService;
 
-        public LibraryForm(AppDbContext dbContext)
+        public LibraryForm(BookService bookService)
         {
-            _dbContext = dbContext;
+            _bookService = bookService;
             InitializeComponent();
             AttachEventHandlers();
         }
@@ -26,12 +25,12 @@ namespace LibraryApp
             this.Load += LibraryForm_Load;
             exitButton.Click += ExitButton_Click;
             addBookButton.Click += AddBookButton_Click;
+            advancedDataGridView.CellClick += AdvancedDataGridView_CellClick;
         }
-
 
         private void LibraryForm_Load(object? sender, EventArgs e)
         {
-            LoadBooksOnDataGridView(LoadBooksFromDatabase());
+            LoadBooksOnDataGridView(_bookService.GetAllBooks());
         }
 
         #endregion
@@ -40,37 +39,34 @@ namespace LibraryApp
 
         private void AddBookButton_Click(object? sender, EventArgs e)
         {
-            new StoreBookForm().ShowDialog();
+            new StoreBookForm(_bookService).ShowDialog();
+            LoadBooksOnDataGridView(_bookService.GetAllBooks());
         }
 
         private void ExitButton_Click(object? sender, EventArgs e) => Close();
 
         #endregion
 
-        private List<Book> LoadBooksFromDatabase()
+        private void LoadBooksOnDataGridView(List<Book> books)
         {
-            try
+            advancedDataGridView.Rows.Clear();
+            foreach (var book in books) advancedDataGridView.Rows.Add(book.Title, book.Author, book.Publisher, book.ISBN, book.Total, book.QuantityAvailable);
+        }
+
+        private void AdvancedDataGridView_CellClick(object? sender, DataGridViewCellEventArgs e)
+        {
+            if (advancedDataGridView.Columns[e.ColumnIndex].Name == "editColumn" && e.RowIndex >= 0)
             {
-                return _dbContext.Books.AsNoTracking().Select(b => new Book
+                var isbn = advancedDataGridView.Rows[e.RowIndex].Cells["isbnColumn"].Value?.ToString();
+                var book = _bookService.FindBookByISBN(isbn);
+
+                if (book != null)
                 {
-                    Title = b.Title,
-                    Author = b.Author,
-                    Publisher = b.Publisher,
-                    ISBN = b.ISBN,
-                    Total = b.Total,
-                    QuantityAvailable = b.QuantityAvailable
-                }).ToList();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Erro ao carregar livros: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return new List<Book>();
+                    new StoreBookForm(_bookService, book).ShowDialog();
+                    LoadBooksOnDataGridView(_bookService.GetAllBooks());
+                }
             }
         }
 
-        private void LoadBooksOnDataGridView(List<Book> books)
-        {
-            foreach (var book in books) advancedDataGridView.Rows.Add(book.Title, book.Author, book.Publisher, book.ISBN, book.Total, book.QuantityAvailable);
-        }
     }
 }

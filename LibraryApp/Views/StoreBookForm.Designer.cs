@@ -32,39 +32,46 @@
             mainTableLayoutPanel = new TableLayoutPanel();
             toolStrip1 = new ToolStrip();
             addButton = new ToolStripButton();
-            toolStripButton2 = new ToolStripButton();
+            removeButton = new ToolStripButton();
+            cancelButton = new ToolStripButton();
             fieldsTableLayoutPanel = new TableLayoutPanel();
-            tableLayoutPanel23 = new TableLayoutPanel();
-            materialTextBox22 = new MaterialSkin.Controls.MaterialTextBox();
-            materialLabel22 = new MaterialSkin.Controls.MaterialLabel();
-            tableLayoutPanel20 = new TableLayoutPanel();
-            materialTextBox19 = new MaterialSkin.Controls.MaterialTextBox();
-            materialLabel19 = new MaterialSkin.Controls.MaterialLabel();
-            tableLayoutPanel17 = new TableLayoutPanel();
-            materialTextBox16 = new MaterialSkin.Controls.MaterialTextBox();
-            materialLabel16 = new MaterialSkin.Controls.MaterialLabel();
-            tableLayoutPanel14 = new TableLayoutPanel();
-            materialTextBox13 = new MaterialSkin.Controls.MaterialTextBox();
-            materialLabel13 = new MaterialSkin.Controls.MaterialLabel();
-            tableLayoutPanel11 = new TableLayoutPanel();
-            materialTextBox10 = new MaterialSkin.Controls.MaterialTextBox();
-            materialLabel10 = new MaterialSkin.Controls.MaterialLabel();
-            tableLayoutPanel8 = new TableLayoutPanel();
-            materialTextBox7 = new MaterialSkin.Controls.MaterialTextBox();
-            materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
+            totalTableLayoutPanel = new TableLayoutPanel();
+            totalTextBox = new MaterialSkin.Controls.MaterialTextBox();
+            totalLabel = new MaterialSkin.Controls.MaterialLabel();
+            genreTableLayoutPanel = new TableLayoutPanel();
+            genreLabel = new MaterialSkin.Controls.MaterialLabel();
+            genreComboBox = new MaterialSkin.Controls.MaterialComboBox();
+            tableLayoutPanel = new TableLayoutPanel();
+            isbnLabel = new MaterialSkin.Controls.MaterialLabel();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            isbnMaskedTextBox = new MaterialSkin.Controls.MaterialMaskedTextBox();
             tableLayoutPanel2 = new TableLayoutPanel();
-            materialTextBox1 = new MaterialSkin.Controls.MaterialTextBox();
-            materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            isbn10RadioButton = new MaterialSkin.Controls.MaterialRadioButton();
+            isbn13RadioButton = new MaterialSkin.Controls.MaterialRadioButton();
+            yearTableLayoutPanel = new TableLayoutPanel();
+            yearLabel = new MaterialSkin.Controls.MaterialLabel();
+            yearComboBox = new MaterialSkin.Controls.MaterialComboBox();
+            publisherTableLayoutPanel = new TableLayoutPanel();
+            publisherTextBox = new MaterialSkin.Controls.MaterialTextBox();
+            publisherLabel = new MaterialSkin.Controls.MaterialLabel();
+            authorTableLayoutPanel = new TableLayoutPanel();
+            authorTextBox = new MaterialSkin.Controls.MaterialTextBox();
+            authorLabel = new MaterialSkin.Controls.MaterialLabel();
+            titleTableLayoutPanel = new TableLayoutPanel();
+            titleTextBox = new MaterialSkin.Controls.MaterialTextBox();
+            titleLabel = new MaterialSkin.Controls.MaterialLabel();
             mainTableLayoutPanel.SuspendLayout();
             toolStrip1.SuspendLayout();
             fieldsTableLayoutPanel.SuspendLayout();
-            tableLayoutPanel23.SuspendLayout();
-            tableLayoutPanel20.SuspendLayout();
-            tableLayoutPanel17.SuspendLayout();
-            tableLayoutPanel14.SuspendLayout();
-            tableLayoutPanel11.SuspendLayout();
-            tableLayoutPanel8.SuspendLayout();
+            totalTableLayoutPanel.SuspendLayout();
+            genreTableLayoutPanel.SuspendLayout();
+            tableLayoutPanel.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
+            yearTableLayoutPanel.SuspendLayout();
+            publisherTableLayoutPanel.SuspendLayout();
+            authorTableLayoutPanel.SuspendLayout();
+            titleTableLayoutPanel.SuspendLayout();
             SuspendLayout();
             // 
             // mainTableLayoutPanel
@@ -74,13 +81,13 @@
             mainTableLayoutPanel.Controls.Add(toolStrip1, 0, 1);
             mainTableLayoutPanel.Controls.Add(fieldsTableLayoutPanel, 0, 0);
             mainTableLayoutPanel.Dock = DockStyle.Fill;
-            mainTableLayoutPanel.Location = new Point(3, 64);
+            mainTableLayoutPanel.Location = new Point(3, 85);
             mainTableLayoutPanel.Name = "mainTableLayoutPanel";
             mainTableLayoutPanel.RowCount = 2;
-            mainTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 93.96378F));
-            mainTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 6.036217F));
+            mainTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 92.5207748F));
+            mainTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 7.479224F));
             mainTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            mainTableLayoutPanel.Size = new Size(512, 464);
+            mainTableLayoutPanel.Size = new Size(512, 512);
             mainTableLayoutPanel.TabIndex = 0;
             // 
             // toolStrip1
@@ -89,11 +96,11 @@
             toolStrip1.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             toolStrip1.GripStyle = ToolStripGripStyle.Hidden;
             toolStrip1.ImageScalingSize = new Size(20, 20);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { addButton, toolStripButton2 });
-            toolStrip1.Location = new Point(0, 435);
+            toolStrip1.Items.AddRange(new ToolStripItem[] { addButton, removeButton, cancelButton });
+            toolStrip1.Location = new Point(0, 482);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.RenderMode = ToolStripRenderMode.System;
-            toolStrip1.Size = new Size(512, 29);
+            toolStrip1.Size = new Size(512, 30);
             toolStrip1.TabIndex = 0;
             toolStrip1.Text = "toolStrip1";
             // 
@@ -101,39 +108,51 @@
             // 
             addButton.Alignment = ToolStripItemAlignment.Right;
             addButton.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            addButton.Enabled = false;
             addButton.Image = (Image)resources.GetObject("addButton.Image");
             addButton.ImageTransparentColor = Color.Magenta;
             addButton.Name = "addButton";
-            addButton.Size = new Size(86, 26);
+            addButton.Size = new Size(86, 27);
             addButton.Text = "Adicionar";
             // 
-            // toolStripButton2
+            // removeButton
             // 
-            toolStripButton2.Alignment = ToolStripItemAlignment.Right;
-            toolStripButton2.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            toolStripButton2.Image = (Image)resources.GetObject("toolStripButton2.Image");
-            toolStripButton2.ImageTransparentColor = Color.Magenta;
-            toolStripButton2.Name = "toolStripButton2";
-            toolStripButton2.Size = new Size(80, 26);
-            toolStripButton2.Text = "Cancelar";
+            removeButton.Alignment = ToolStripItemAlignment.Right;
+            removeButton.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            removeButton.Image = (Image)resources.GetObject("removeButton.Image");
+            removeButton.ImageTransparentColor = Color.Magenta;
+            removeButton.Name = "removeButton";
+            removeButton.Size = new Size(81, 27);
+            removeButton.Text = "Remover";
+            removeButton.Visible = false;
+            // 
+            // cancelButton
+            // 
+            cancelButton.Alignment = ToolStripItemAlignment.Right;
+            cancelButton.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            cancelButton.ImageTransparentColor = Color.Magenta;
+            cancelButton.Name = "cancelButton";
+            cancelButton.Size = new Size(80, 27);
+            cancelButton.Text = "Cancelar";
             // 
             // fieldsTableLayoutPanel
             // 
             fieldsTableLayoutPanel.Anchor = AnchorStyles.None;
             fieldsTableLayoutPanel.AutoScroll = true;
+            fieldsTableLayoutPanel.AutoSize = true;
             fieldsTableLayoutPanel.ColumnCount = 3;
             fieldsTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 5F));
             fieldsTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 90F));
             fieldsTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 5F));
-            fieldsTableLayoutPanel.Controls.Add(tableLayoutPanel23, 1, 6);
-            fieldsTableLayoutPanel.Controls.Add(tableLayoutPanel20, 1, 5);
-            fieldsTableLayoutPanel.Controls.Add(tableLayoutPanel17, 1, 4);
-            fieldsTableLayoutPanel.Controls.Add(tableLayoutPanel14, 1, 3);
-            fieldsTableLayoutPanel.Controls.Add(tableLayoutPanel11, 1, 2);
-            fieldsTableLayoutPanel.Controls.Add(tableLayoutPanel8, 1, 1);
-            fieldsTableLayoutPanel.Controls.Add(tableLayoutPanel2, 1, 0);
+            fieldsTableLayoutPanel.Controls.Add(totalTableLayoutPanel, 1, 6);
+            fieldsTableLayoutPanel.Controls.Add(genreTableLayoutPanel, 1, 5);
+            fieldsTableLayoutPanel.Controls.Add(tableLayoutPanel, 1, 4);
+            fieldsTableLayoutPanel.Controls.Add(yearTableLayoutPanel, 1, 3);
+            fieldsTableLayoutPanel.Controls.Add(publisherTableLayoutPanel, 1, 2);
+            fieldsTableLayoutPanel.Controls.Add(authorTableLayoutPanel, 1, 1);
+            fieldsTableLayoutPanel.Controls.Add(titleTableLayoutPanel, 1, 0);
             fieldsTableLayoutPanel.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            fieldsTableLayoutPanel.Location = new Point(4, 3);
+            fieldsTableLayoutPanel.Location = new Point(3, 3);
             fieldsTableLayoutPanel.Name = "fieldsTableLayoutPanel";
             fieldsTableLayoutPanel.RowCount = 7;
             fieldsTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857151F));
@@ -143,361 +162,471 @@
             fieldsTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857151F));
             fieldsTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857151F));
             fieldsTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857151F));
-            fieldsTableLayoutPanel.Size = new Size(504, 429);
+            fieldsTableLayoutPanel.Size = new Size(506, 467);
             fieldsTableLayoutPanel.TabIndex = 1;
             // 
-            // tableLayoutPanel23
+            // totalTableLayoutPanel
             // 
-            tableLayoutPanel23.ColumnCount = 2;
-            tableLayoutPanel23.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanel23.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80F));
-            tableLayoutPanel23.Controls.Add(materialTextBox22, 1, 0);
-            tableLayoutPanel23.Controls.Add(materialLabel22, 0, 0);
-            tableLayoutPanel23.Dock = DockStyle.Fill;
-            tableLayoutPanel23.Location = new Point(28, 369);
-            tableLayoutPanel23.Name = "tableLayoutPanel23";
-            tableLayoutPanel23.RowCount = 1;
-            tableLayoutPanel23.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel23.Size = new Size(447, 57);
-            tableLayoutPanel23.TabIndex = 26;
+            totalTableLayoutPanel.ColumnCount = 2;
+            totalTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            totalTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80F));
+            totalTableLayoutPanel.Controls.Add(totalTextBox, 1, 0);
+            totalTableLayoutPanel.Controls.Add(totalLabel, 0, 0);
+            totalTableLayoutPanel.Dock = DockStyle.Fill;
+            totalTableLayoutPanel.Location = new Point(28, 399);
+            totalTableLayoutPanel.Name = "totalTableLayoutPanel";
+            totalTableLayoutPanel.RowCount = 1;
+            totalTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            totalTableLayoutPanel.Size = new Size(449, 65);
+            totalTableLayoutPanel.TabIndex = 26;
             // 
-            // materialTextBox22
+            // totalTextBox
             // 
-            materialTextBox22.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            materialTextBox22.AnimateReadOnly = false;
-            materialTextBox22.BorderStyle = BorderStyle.None;
-            materialTextBox22.Depth = 0;
-            materialTextBox22.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialTextBox22.LeadingIcon = null;
-            materialTextBox22.Location = new Point(92, 3);
-            materialTextBox22.MaxLength = 50;
-            materialTextBox22.MouseState = MaterialSkin.MouseState.OUT;
-            materialTextBox22.Multiline = false;
-            materialTextBox22.Name = "materialTextBox22";
-            materialTextBox22.Size = new Size(352, 50);
-            materialTextBox22.TabIndex = 3;
-            materialTextBox22.Text = "";
-            materialTextBox22.TrailingIcon = null;
+            totalTextBox.Anchor = AnchorStyles.Left;
+            totalTextBox.AnimateReadOnly = false;
+            totalTextBox.BorderStyle = BorderStyle.None;
+            totalTextBox.Depth = 0;
+            totalTextBox.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            totalTextBox.LeadingIcon = null;
+            totalTextBox.Location = new Point(92, 7);
+            totalTextBox.MaxLength = 3;
+            totalTextBox.MouseState = MaterialSkin.MouseState.OUT;
+            totalTextBox.Multiline = false;
+            totalTextBox.Name = "totalTextBox";
+            totalTextBox.Size = new Size(89, 50);
+            totalTextBox.TabIndex = 3;
+            totalTextBox.Text = "";
+            totalTextBox.TrailingIcon = null;
             // 
-            // materialLabel22
+            // totalLabel
             // 
-            materialLabel22.Anchor = AnchorStyles.Right;
-            materialLabel22.AutoSize = true;
-            materialLabel22.Depth = 0;
-            materialLabel22.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel22.Location = new Point(3, 19);
-            materialLabel22.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel22.Name = "materialLabel22";
-            materialLabel22.Size = new Size(83, 19);
-            materialLabel22.TabIndex = 2;
-            materialLabel22.Text = "Quantidade";
+            totalLabel.Anchor = AnchorStyles.Right;
+            totalLabel.AutoSize = true;
+            totalLabel.Depth = 0;
+            totalLabel.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            totalLabel.Location = new Point(3, 23);
+            totalLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            totalLabel.Name = "totalLabel";
+            totalLabel.Size = new Size(83, 19);
+            totalLabel.TabIndex = 2;
+            totalLabel.Text = "Quantidade";
             // 
-            // tableLayoutPanel20
+            // genreTableLayoutPanel
             // 
-            tableLayoutPanel20.ColumnCount = 2;
-            tableLayoutPanel20.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanel20.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80F));
-            tableLayoutPanel20.Controls.Add(materialTextBox19, 1, 0);
-            tableLayoutPanel20.Controls.Add(materialLabel19, 0, 0);
-            tableLayoutPanel20.Dock = DockStyle.Fill;
-            tableLayoutPanel20.Location = new Point(28, 308);
-            tableLayoutPanel20.Name = "tableLayoutPanel20";
-            tableLayoutPanel20.RowCount = 1;
-            tableLayoutPanel20.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel20.Size = new Size(447, 55);
-            tableLayoutPanel20.TabIndex = 23;
+            genreTableLayoutPanel.ColumnCount = 2;
+            genreTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            genreTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80F));
+            genreTableLayoutPanel.Controls.Add(genreLabel, 0, 0);
+            genreTableLayoutPanel.Controls.Add(genreComboBox, 1, 0);
+            genreTableLayoutPanel.Dock = DockStyle.Fill;
+            genreTableLayoutPanel.Location = new Point(28, 333);
+            genreTableLayoutPanel.Name = "genreTableLayoutPanel";
+            genreTableLayoutPanel.RowCount = 1;
+            genreTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            genreTableLayoutPanel.Size = new Size(449, 60);
+            genreTableLayoutPanel.TabIndex = 23;
             // 
-            // materialTextBox19
+            // genreLabel
             // 
-            materialTextBox19.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            materialTextBox19.AnimateReadOnly = false;
-            materialTextBox19.BorderStyle = BorderStyle.None;
-            materialTextBox19.Depth = 0;
-            materialTextBox19.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialTextBox19.LeadingIcon = null;
-            materialTextBox19.Location = new Point(92, 3);
-            materialTextBox19.MaxLength = 50;
-            materialTextBox19.MouseState = MaterialSkin.MouseState.OUT;
-            materialTextBox19.Multiline = false;
-            materialTextBox19.Name = "materialTextBox19";
-            materialTextBox19.Size = new Size(352, 50);
-            materialTextBox19.TabIndex = 3;
-            materialTextBox19.Text = "";
-            materialTextBox19.TrailingIcon = null;
+            genreLabel.Anchor = AnchorStyles.Right;
+            genreLabel.AutoSize = true;
+            genreLabel.Depth = 0;
+            genreLabel.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            genreLabel.Location = new Point(35, 20);
+            genreLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            genreLabel.Name = "genreLabel";
+            genreLabel.Size = new Size(51, 19);
+            genreLabel.TabIndex = 2;
+            genreLabel.Text = "Genêro";
             // 
-            // materialLabel19
+            // genreComboBox
             // 
-            materialLabel19.Anchor = AnchorStyles.Right;
-            materialLabel19.AutoSize = true;
-            materialLabel19.Depth = 0;
-            materialLabel19.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel19.Location = new Point(35, 18);
-            materialLabel19.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel19.Name = "materialLabel19";
-            materialLabel19.Size = new Size(51, 19);
-            materialLabel19.TabIndex = 2;
-            materialLabel19.Text = "Genêro";
+            genreComboBox.AutoResize = false;
+            genreComboBox.BackColor = Color.FromArgb(255, 255, 255);
+            genreComboBox.Depth = 0;
+            genreComboBox.DrawMode = DrawMode.OwnerDrawVariable;
+            genreComboBox.DropDownHeight = 174;
+            genreComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            genreComboBox.DropDownWidth = 121;
+            genreComboBox.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            genreComboBox.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            genreComboBox.FormattingEnabled = true;
+            genreComboBox.IntegralHeight = false;
+            genreComboBox.ItemHeight = 43;
+            genreComboBox.Items.AddRange(new object[] { "Administração", "Aventura", "Autoajuda", "Autobiografia", "Biografia", "Ciências exatas", "Ciências sociais", "Comédia", "Conto", "Contos de fadas", "Crônicas", "Desenvolvimento pessoal", "Direito", "Distopia", "Drama", "Economia", "Educação", "Ensaio", "Engenharia", "Espiritualidade / Religião", "Esportes", "Fantasia", "Fábulas", "Ficção contemporânea", "Ficção científica", "Ficção infantil", "Ficção jovem adulta (YA)", "Ficção sobrenatural", "Filosofia", "Graphic novel", "História", "Horror / Terror", "HQs (Quadrinhos)", "Literatura juvenil", "Linguística", "Mangá", "Medicina", "Memórias", "Mistério", "Negócios / Empreendedorismo", "Poesia", "Policial / Crime", "Política", "Psicologia", "Quadrinhos (HQs)", "Romance", "Saúde / Bem-estar", "Suspense", "Teatro", "Tecnologia", "TI", "Thriller psicológico", "Viagens" });
+            genreComboBox.Location = new Point(92, 4);
+            genreComboBox.Margin = new Padding(3, 4, 3, 4);
+            genreComboBox.MaxDropDownItems = 4;
+            genreComboBox.MouseState = MaterialSkin.MouseState.OUT;
+            genreComboBox.Name = "genreComboBox";
+            genreComboBox.Size = new Size(221, 49);
+            genreComboBox.StartIndex = 0;
+            genreComboBox.TabIndex = 3;
             // 
-            // tableLayoutPanel17
+            // tableLayoutPanel
             // 
-            tableLayoutPanel17.ColumnCount = 2;
-            tableLayoutPanel17.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanel17.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80F));
-            tableLayoutPanel17.Controls.Add(materialTextBox16, 1, 0);
-            tableLayoutPanel17.Controls.Add(materialLabel16, 0, 0);
-            tableLayoutPanel17.Dock = DockStyle.Fill;
-            tableLayoutPanel17.Location = new Point(28, 247);
-            tableLayoutPanel17.Name = "tableLayoutPanel17";
-            tableLayoutPanel17.RowCount = 1;
-            tableLayoutPanel17.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel17.Size = new Size(447, 55);
-            tableLayoutPanel17.TabIndex = 20;
+            tableLayoutPanel.ColumnCount = 2;
+            tableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            tableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80F));
+            tableLayoutPanel.Controls.Add(isbnLabel, 0, 0);
+            tableLayoutPanel.Controls.Add(tableLayoutPanel1, 1, 0);
+            tableLayoutPanel.Dock = DockStyle.Fill;
+            tableLayoutPanel.Location = new Point(28, 267);
+            tableLayoutPanel.Name = "tableLayoutPanel";
+            tableLayoutPanel.RowCount = 1;
+            tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel.Size = new Size(449, 60);
+            tableLayoutPanel.TabIndex = 20;
             // 
-            // materialTextBox16
+            // isbnLabel
             // 
-            materialTextBox16.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            materialTextBox16.AnimateReadOnly = false;
-            materialTextBox16.BorderStyle = BorderStyle.None;
-            materialTextBox16.Depth = 0;
-            materialTextBox16.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialTextBox16.LeadingIcon = null;
-            materialTextBox16.Location = new Point(92, 3);
-            materialTextBox16.MaxLength = 50;
-            materialTextBox16.MouseState = MaterialSkin.MouseState.OUT;
-            materialTextBox16.Multiline = false;
-            materialTextBox16.Name = "materialTextBox16";
-            materialTextBox16.Size = new Size(352, 50);
-            materialTextBox16.TabIndex = 3;
-            materialTextBox16.Text = "";
-            materialTextBox16.TrailingIcon = null;
+            isbnLabel.Anchor = AnchorStyles.Right;
+            isbnLabel.AutoSize = true;
+            isbnLabel.Depth = 0;
+            isbnLabel.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            isbnLabel.Location = new Point(50, 20);
+            isbnLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            isbnLabel.Name = "isbnLabel";
+            isbnLabel.Size = new Size(36, 19);
+            isbnLabel.TabIndex = 2;
+            isbnLabel.Text = "ISBN";
             // 
-            // materialLabel16
+            // tableLayoutPanel1
             // 
-            materialLabel16.Anchor = AnchorStyles.Right;
-            materialLabel16.AutoSize = true;
-            materialLabel16.Depth = 0;
-            materialLabel16.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel16.Location = new Point(50, 18);
-            materialLabel16.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel16.Name = "materialLabel16";
-            materialLabel16.Size = new Size(36, 19);
-            materialLabel16.TabIndex = 2;
-            materialLabel16.Text = "ISBN";
+            tableLayoutPanel1.ColumnCount = 2;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Controls.Add(isbnMaskedTextBox, 0, 0);
+            tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 1, 0);
+            tableLayoutPanel1.Dock = DockStyle.Fill;
+            tableLayoutPanel1.Location = new Point(92, 4);
+            tableLayoutPanel1.Margin = new Padding(3, 4, 3, 4);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Size = new Size(354, 52);
+            tableLayoutPanel1.TabIndex = 3;
             // 
-            // tableLayoutPanel14
+            // isbnMaskedTextBox
             // 
-            tableLayoutPanel14.ColumnCount = 2;
-            tableLayoutPanel14.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanel14.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80F));
-            tableLayoutPanel14.Controls.Add(materialTextBox13, 1, 0);
-            tableLayoutPanel14.Controls.Add(materialLabel13, 0, 0);
-            tableLayoutPanel14.Dock = DockStyle.Fill;
-            tableLayoutPanel14.Location = new Point(28, 186);
-            tableLayoutPanel14.Name = "tableLayoutPanel14";
-            tableLayoutPanel14.RowCount = 1;
-            tableLayoutPanel14.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel14.Size = new Size(447, 55);
-            tableLayoutPanel14.TabIndex = 17;
-            // 
-            // materialTextBox13
-            // 
-            materialTextBox13.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            materialTextBox13.AnimateReadOnly = false;
-            materialTextBox13.BorderStyle = BorderStyle.None;
-            materialTextBox13.Depth = 0;
-            materialTextBox13.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialTextBox13.LeadingIcon = null;
-            materialTextBox13.Location = new Point(92, 3);
-            materialTextBox13.MaxLength = 50;
-            materialTextBox13.MouseState = MaterialSkin.MouseState.OUT;
-            materialTextBox13.Multiline = false;
-            materialTextBox13.Name = "materialTextBox13";
-            materialTextBox13.Size = new Size(352, 50);
-            materialTextBox13.TabIndex = 3;
-            materialTextBox13.Text = "";
-            materialTextBox13.TrailingIcon = null;
-            // 
-            // materialLabel13
-            // 
-            materialLabel13.Anchor = AnchorStyles.Right;
-            materialLabel13.AutoSize = true;
-            materialLabel13.Depth = 0;
-            materialLabel13.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel13.Location = new Point(57, 18);
-            materialLabel13.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel13.Name = "materialLabel13";
-            materialLabel13.Size = new Size(29, 19);
-            materialLabel13.TabIndex = 2;
-            materialLabel13.Text = "Ano";
-            // 
-            // tableLayoutPanel11
-            // 
-            tableLayoutPanel11.ColumnCount = 2;
-            tableLayoutPanel11.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanel11.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80F));
-            tableLayoutPanel11.Controls.Add(materialTextBox10, 1, 0);
-            tableLayoutPanel11.Controls.Add(materialLabel10, 0, 0);
-            tableLayoutPanel11.Dock = DockStyle.Fill;
-            tableLayoutPanel11.Location = new Point(28, 125);
-            tableLayoutPanel11.Name = "tableLayoutPanel11";
-            tableLayoutPanel11.RowCount = 1;
-            tableLayoutPanel11.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel11.Size = new Size(447, 55);
-            tableLayoutPanel11.TabIndex = 14;
-            // 
-            // materialTextBox10
-            // 
-            materialTextBox10.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            materialTextBox10.AnimateReadOnly = false;
-            materialTextBox10.BorderStyle = BorderStyle.None;
-            materialTextBox10.Depth = 0;
-            materialTextBox10.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialTextBox10.LeadingIcon = null;
-            materialTextBox10.Location = new Point(92, 3);
-            materialTextBox10.MaxLength = 50;
-            materialTextBox10.MouseState = MaterialSkin.MouseState.OUT;
-            materialTextBox10.Multiline = false;
-            materialTextBox10.Name = "materialTextBox10";
-            materialTextBox10.Size = new Size(352, 50);
-            materialTextBox10.TabIndex = 3;
-            materialTextBox10.Text = "";
-            materialTextBox10.TrailingIcon = null;
-            // 
-            // materialLabel10
-            // 
-            materialLabel10.Anchor = AnchorStyles.Right;
-            materialLabel10.AutoSize = true;
-            materialLabel10.Depth = 0;
-            materialLabel10.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel10.Location = new Point(35, 18);
-            materialLabel10.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel10.Name = "materialLabel10";
-            materialLabel10.Size = new Size(51, 19);
-            materialLabel10.TabIndex = 2;
-            materialLabel10.Text = "Editora";
-            // 
-            // tableLayoutPanel8
-            // 
-            tableLayoutPanel8.ColumnCount = 2;
-            tableLayoutPanel8.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanel8.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80F));
-            tableLayoutPanel8.Controls.Add(materialTextBox7, 1, 0);
-            tableLayoutPanel8.Controls.Add(materialLabel7, 0, 0);
-            tableLayoutPanel8.Dock = DockStyle.Fill;
-            tableLayoutPanel8.Location = new Point(28, 64);
-            tableLayoutPanel8.Name = "tableLayoutPanel8";
-            tableLayoutPanel8.RowCount = 1;
-            tableLayoutPanel8.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel8.Size = new Size(447, 55);
-            tableLayoutPanel8.TabIndex = 11;
-            // 
-            // materialTextBox7
-            // 
-            materialTextBox7.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            materialTextBox7.AnimateReadOnly = false;
-            materialTextBox7.BorderStyle = BorderStyle.None;
-            materialTextBox7.Depth = 0;
-            materialTextBox7.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialTextBox7.LeadingIcon = null;
-            materialTextBox7.Location = new Point(92, 3);
-            materialTextBox7.MaxLength = 50;
-            materialTextBox7.MouseState = MaterialSkin.MouseState.OUT;
-            materialTextBox7.Multiline = false;
-            materialTextBox7.Name = "materialTextBox7";
-            materialTextBox7.Size = new Size(352, 50);
-            materialTextBox7.TabIndex = 3;
-            materialTextBox7.Text = "";
-            materialTextBox7.TrailingIcon = null;
-            // 
-            // materialLabel7
-            // 
-            materialLabel7.Anchor = AnchorStyles.Right;
-            materialLabel7.AutoSize = true;
-            materialLabel7.Depth = 0;
-            materialLabel7.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel7.Location = new Point(47, 18);
-            materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel7.Name = "materialLabel7";
-            materialLabel7.Size = new Size(39, 19);
-            materialLabel7.TabIndex = 2;
-            materialLabel7.Text = "Autor";
+            isbnMaskedTextBox.AllowPromptAsInput = true;
+            isbnMaskedTextBox.AnimateReadOnly = false;
+            isbnMaskedTextBox.AsciiOnly = false;
+            isbnMaskedTextBox.BackgroundImageLayout = ImageLayout.None;
+            isbnMaskedTextBox.BeepOnError = false;
+            isbnMaskedTextBox.CutCopyMaskFormat = MaskFormat.IncludeLiterals;
+            isbnMaskedTextBox.Depth = 0;
+            isbnMaskedTextBox.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            isbnMaskedTextBox.HelperText = "Texto";
+            isbnMaskedTextBox.HidePromptOnLeave = false;
+            isbnMaskedTextBox.HideSelection = true;
+            isbnMaskedTextBox.InsertKeyMode = InsertKeyMode.Default;
+            isbnMaskedTextBox.LeadingIcon = null;
+            isbnMaskedTextBox.Location = new Point(3, 4);
+            isbnMaskedTextBox.Margin = new Padding(3, 4, 3, 4);
+            isbnMaskedTextBox.Mask = "000-0-00-000000-0";
+            isbnMaskedTextBox.MaxLength = 32767;
+            isbnMaskedTextBox.MouseState = MaterialSkin.MouseState.OUT;
+            isbnMaskedTextBox.Name = "isbnMaskedTextBox";
+            isbnMaskedTextBox.PasswordChar = '\0';
+            isbnMaskedTextBox.PrefixSuffixText = null;
+            isbnMaskedTextBox.PromptChar = '_';
+            isbnMaskedTextBox.ReadOnly = false;
+            isbnMaskedTextBox.RejectInputOnFirstFailure = false;
+            isbnMaskedTextBox.ResetOnPrompt = true;
+            isbnMaskedTextBox.ResetOnSpace = true;
+            isbnMaskedTextBox.RightToLeft = RightToLeft.No;
+            isbnMaskedTextBox.SelectedText = "";
+            isbnMaskedTextBox.SelectionLength = 0;
+            isbnMaskedTextBox.SelectionStart = 0;
+            isbnMaskedTextBox.ShortcutsEnabled = true;
+            isbnMaskedTextBox.Size = new Size(165, 48);
+            isbnMaskedTextBox.SkipLiterals = true;
+            isbnMaskedTextBox.TabIndex = 5;
+            isbnMaskedTextBox.TabStop = false;
+            isbnMaskedTextBox.TextAlign = HorizontalAlignment.Left;
+            isbnMaskedTextBox.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            isbnMaskedTextBox.TrailingIcon = null;
+            isbnMaskedTextBox.UseSystemPasswordChar = false;
+            isbnMaskedTextBox.ValidatingType = null;
             // 
             // tableLayoutPanel2
             // 
-            tableLayoutPanel2.ColumnCount = 2;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80F));
-            tableLayoutPanel2.Controls.Add(materialTextBox1, 1, 0);
-            tableLayoutPanel2.Controls.Add(materialLabel1, 0, 0);
+            tableLayoutPanel2.ColumnCount = 1;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.Controls.Add(isbn10RadioButton, 0, 0);
+            tableLayoutPanel2.Controls.Add(isbn13RadioButton, 0, 1);
             tableLayoutPanel2.Dock = DockStyle.Fill;
-            tableLayoutPanel2.Location = new Point(28, 3);
+            tableLayoutPanel2.Location = new Point(180, 4);
+            tableLayoutPanel2.Margin = new Padding(3, 4, 3, 4);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
-            tableLayoutPanel2.RowCount = 1;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Size = new Size(447, 55);
-            tableLayoutPanel2.TabIndex = 7;
+            tableLayoutPanel2.RowCount = 2;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.Size = new Size(171, 44);
+            tableLayoutPanel2.TabIndex = 6;
             // 
-            // materialTextBox1
+            // isbn10RadioButton
             // 
-            materialTextBox1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            materialTextBox1.AnimateReadOnly = false;
-            materialTextBox1.BorderStyle = BorderStyle.None;
-            materialTextBox1.Depth = 0;
-            materialTextBox1.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialTextBox1.LeadingIcon = null;
-            materialTextBox1.Location = new Point(92, 3);
-            materialTextBox1.MaxLength = 50;
-            materialTextBox1.MouseState = MaterialSkin.MouseState.OUT;
-            materialTextBox1.Multiline = false;
-            materialTextBox1.Name = "materialTextBox1";
-            materialTextBox1.Size = new Size(352, 50);
-            materialTextBox1.TabIndex = 3;
-            materialTextBox1.Text = "";
-            materialTextBox1.TrailingIcon = null;
+            isbn10RadioButton.AutoSize = true;
+            isbn10RadioButton.Depth = 0;
+            isbn10RadioButton.Location = new Point(0, 0);
+            isbn10RadioButton.Margin = new Padding(0);
+            isbn10RadioButton.MouseLocation = new Point(-1, -1);
+            isbn10RadioButton.MouseState = MaterialSkin.MouseState.HOVER;
+            isbn10RadioButton.Name = "isbn10RadioButton";
+            isbn10RadioButton.Ripple = true;
+            isbn10RadioButton.Size = new Size(85, 22);
+            isbn10RadioButton.TabIndex = 0;
+            isbn10RadioButton.TabStop = true;
+            isbn10RadioButton.Text = "ISBN 10";
+            isbn10RadioButton.UseVisualStyleBackColor = true;
             // 
-            // materialLabel1
+            // isbn13RadioButton
             // 
-            materialLabel1.Anchor = AnchorStyles.Right;
-            materialLabel1.AutoSize = true;
-            materialLabel1.Depth = 0;
-            materialLabel1.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel1.Location = new Point(44, 18);
-            materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel1.Name = "materialLabel1";
-            materialLabel1.Size = new Size(42, 19);
-            materialLabel1.TabIndex = 2;
-            materialLabel1.Text = "Titulo";
+            isbn13RadioButton.AutoSize = true;
+            isbn13RadioButton.Checked = true;
+            isbn13RadioButton.Depth = 0;
+            isbn13RadioButton.Location = new Point(0, 22);
+            isbn13RadioButton.Margin = new Padding(0);
+            isbn13RadioButton.MouseLocation = new Point(-1, -1);
+            isbn13RadioButton.MouseState = MaterialSkin.MouseState.HOVER;
+            isbn13RadioButton.Name = "isbn13RadioButton";
+            isbn13RadioButton.Ripple = true;
+            isbn13RadioButton.Size = new Size(85, 22);
+            isbn13RadioButton.TabIndex = 1;
+            isbn13RadioButton.TabStop = true;
+            isbn13RadioButton.Text = "ISBN 13";
+            isbn13RadioButton.UseVisualStyleBackColor = true;
+            // 
+            // yearTableLayoutPanel
+            // 
+            yearTableLayoutPanel.ColumnCount = 2;
+            yearTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            yearTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80F));
+            yearTableLayoutPanel.Controls.Add(yearLabel, 0, 0);
+            yearTableLayoutPanel.Controls.Add(yearComboBox, 1, 0);
+            yearTableLayoutPanel.Dock = DockStyle.Fill;
+            yearTableLayoutPanel.Location = new Point(28, 201);
+            yearTableLayoutPanel.Name = "yearTableLayoutPanel";
+            yearTableLayoutPanel.RowCount = 1;
+            yearTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            yearTableLayoutPanel.Size = new Size(449, 60);
+            yearTableLayoutPanel.TabIndex = 17;
+            // 
+            // yearLabel
+            // 
+            yearLabel.Anchor = AnchorStyles.Right;
+            yearLabel.AutoSize = true;
+            yearLabel.Depth = 0;
+            yearLabel.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            yearLabel.Location = new Point(57, 20);
+            yearLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            yearLabel.Name = "yearLabel";
+            yearLabel.Size = new Size(29, 19);
+            yearLabel.TabIndex = 2;
+            yearLabel.Text = "Ano";
+            // 
+            // yearComboBox
+            // 
+            yearComboBox.AutoResize = false;
+            yearComboBox.BackColor = Color.FromArgb(255, 255, 255);
+            yearComboBox.Depth = 0;
+            yearComboBox.DrawMode = DrawMode.OwnerDrawVariable;
+            yearComboBox.DropDownHeight = 174;
+            yearComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            yearComboBox.DropDownWidth = 121;
+            yearComboBox.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            yearComboBox.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            yearComboBox.FormattingEnabled = true;
+            yearComboBox.IntegralHeight = false;
+            yearComboBox.ItemHeight = 43;
+            yearComboBox.Location = new Point(92, 4);
+            yearComboBox.Margin = new Padding(3, 4, 3, 4);
+            yearComboBox.MaxDropDownItems = 4;
+            yearComboBox.MouseState = MaterialSkin.MouseState.OUT;
+            yearComboBox.Name = "yearComboBox";
+            yearComboBox.Size = new Size(134, 49);
+            yearComboBox.StartIndex = 0;
+            yearComboBox.TabIndex = 3;
+            // 
+            // publisherTableLayoutPanel
+            // 
+            publisherTableLayoutPanel.ColumnCount = 2;
+            publisherTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            publisherTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80F));
+            publisherTableLayoutPanel.Controls.Add(publisherTextBox, 1, 0);
+            publisherTableLayoutPanel.Controls.Add(publisherLabel, 0, 0);
+            publisherTableLayoutPanel.Dock = DockStyle.Fill;
+            publisherTableLayoutPanel.Location = new Point(28, 135);
+            publisherTableLayoutPanel.Name = "publisherTableLayoutPanel";
+            publisherTableLayoutPanel.RowCount = 1;
+            publisherTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            publisherTableLayoutPanel.Size = new Size(449, 60);
+            publisherTableLayoutPanel.TabIndex = 14;
+            // 
+            // publisherTextBox
+            // 
+            publisherTextBox.Anchor = AnchorStyles.Left;
+            publisherTextBox.AnimateReadOnly = false;
+            publisherTextBox.BorderStyle = BorderStyle.None;
+            publisherTextBox.Depth = 0;
+            publisherTextBox.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            publisherTextBox.LeadingIcon = null;
+            publisherTextBox.Location = new Point(92, 5);
+            publisherTextBox.MaxLength = 50;
+            publisherTextBox.MouseState = MaterialSkin.MouseState.OUT;
+            publisherTextBox.Multiline = false;
+            publisherTextBox.Name = "publisherTextBox";
+            publisherTextBox.Size = new Size(334, 50);
+            publisherTextBox.TabIndex = 3;
+            publisherTextBox.Text = "";
+            publisherTextBox.TrailingIcon = null;
+            // 
+            // publisherLabel
+            // 
+            publisherLabel.Anchor = AnchorStyles.Right;
+            publisherLabel.AutoSize = true;
+            publisherLabel.Depth = 0;
+            publisherLabel.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            publisherLabel.Location = new Point(35, 20);
+            publisherLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            publisherLabel.Name = "publisherLabel";
+            publisherLabel.Size = new Size(51, 19);
+            publisherLabel.TabIndex = 2;
+            publisherLabel.Text = "Editora";
+            // 
+            // authorTableLayoutPanel
+            // 
+            authorTableLayoutPanel.ColumnCount = 2;
+            authorTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            authorTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80F));
+            authorTableLayoutPanel.Controls.Add(authorTextBox, 1, 0);
+            authorTableLayoutPanel.Controls.Add(authorLabel, 0, 0);
+            authorTableLayoutPanel.Dock = DockStyle.Fill;
+            authorTableLayoutPanel.Location = new Point(28, 69);
+            authorTableLayoutPanel.Name = "authorTableLayoutPanel";
+            authorTableLayoutPanel.RowCount = 1;
+            authorTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            authorTableLayoutPanel.Size = new Size(449, 60);
+            authorTableLayoutPanel.TabIndex = 11;
+            // 
+            // authorTextBox
+            // 
+            authorTextBox.Anchor = AnchorStyles.Left;
+            authorTextBox.AnimateReadOnly = false;
+            authorTextBox.BorderStyle = BorderStyle.None;
+            authorTextBox.Depth = 0;
+            authorTextBox.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            authorTextBox.LeadingIcon = null;
+            authorTextBox.Location = new Point(92, 5);
+            authorTextBox.MaxLength = 50;
+            authorTextBox.MouseState = MaterialSkin.MouseState.OUT;
+            authorTextBox.Multiline = false;
+            authorTextBox.Name = "authorTextBox";
+            authorTextBox.Size = new Size(334, 50);
+            authorTextBox.TabIndex = 3;
+            authorTextBox.Text = "";
+            authorTextBox.TrailingIcon = null;
+            // 
+            // authorLabel
+            // 
+            authorLabel.Anchor = AnchorStyles.Right;
+            authorLabel.AutoSize = true;
+            authorLabel.Depth = 0;
+            authorLabel.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            authorLabel.Location = new Point(47, 20);
+            authorLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            authorLabel.Name = "authorLabel";
+            authorLabel.Size = new Size(39, 19);
+            authorLabel.TabIndex = 2;
+            authorLabel.Text = "Autor";
+            // 
+            // titleTableLayoutPanel
+            // 
+            titleTableLayoutPanel.AutoSize = true;
+            titleTableLayoutPanel.ColumnCount = 2;
+            titleTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            titleTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80F));
+            titleTableLayoutPanel.Controls.Add(titleTextBox, 1, 0);
+            titleTableLayoutPanel.Controls.Add(titleLabel, 0, 0);
+            titleTableLayoutPanel.Dock = DockStyle.Fill;
+            titleTableLayoutPanel.Location = new Point(28, 3);
+            titleTableLayoutPanel.Name = "titleTableLayoutPanel";
+            titleTableLayoutPanel.RowCount = 1;
+            titleTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            titleTableLayoutPanel.Size = new Size(449, 60);
+            titleTableLayoutPanel.TabIndex = 7;
+            // 
+            // titleTextBox
+            // 
+            titleTextBox.Anchor = AnchorStyles.Left;
+            titleTextBox.AnimateReadOnly = false;
+            titleTextBox.BorderStyle = BorderStyle.None;
+            titleTextBox.Depth = 0;
+            titleTextBox.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            titleTextBox.LeadingIcon = null;
+            titleTextBox.Location = new Point(92, 5);
+            titleTextBox.MaxLength = 50;
+            titleTextBox.MouseState = MaterialSkin.MouseState.OUT;
+            titleTextBox.Multiline = false;
+            titleTextBox.Name = "titleTextBox";
+            titleTextBox.Size = new Size(334, 50);
+            titleTextBox.TabIndex = 3;
+            titleTextBox.Text = "";
+            titleTextBox.TrailingIcon = null;
+            // 
+            // titleLabel
+            // 
+            titleLabel.Anchor = AnchorStyles.Right;
+            titleLabel.AutoSize = true;
+            titleLabel.Depth = 0;
+            titleLabel.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            titleLabel.Location = new Point(44, 20);
+            titleLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            titleLabel.Name = "titleLabel";
+            titleLabel.Size = new Size(42, 19);
+            titleLabel.TabIndex = 2;
+            titleLabel.Text = "Titulo";
             // 
             // StoreBookForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(518, 531);
+            ClientSize = new Size(518, 600);
             Controls.Add(mainTableLayoutPanel);
             MaximizeBox = false;
             Name = "StoreBookForm";
+            Padding = new Padding(3, 85, 3, 3);
             ShowIcon = false;
             Sizable = false;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Adicionar Livro";
             mainTableLayoutPanel.ResumeLayout(false);
             mainTableLayoutPanel.PerformLayout();
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
             fieldsTableLayoutPanel.ResumeLayout(false);
-            tableLayoutPanel23.ResumeLayout(false);
-            tableLayoutPanel23.PerformLayout();
-            tableLayoutPanel20.ResumeLayout(false);
-            tableLayoutPanel20.PerformLayout();
-            tableLayoutPanel17.ResumeLayout(false);
-            tableLayoutPanel17.PerformLayout();
-            tableLayoutPanel14.ResumeLayout(false);
-            tableLayoutPanel14.PerformLayout();
-            tableLayoutPanel11.ResumeLayout(false);
-            tableLayoutPanel11.PerformLayout();
-            tableLayoutPanel8.ResumeLayout(false);
-            tableLayoutPanel8.PerformLayout();
+            fieldsTableLayoutPanel.PerformLayout();
+            totalTableLayoutPanel.ResumeLayout(false);
+            totalTableLayoutPanel.PerformLayout();
+            genreTableLayoutPanel.ResumeLayout(false);
+            genreTableLayoutPanel.PerformLayout();
+            tableLayoutPanel.ResumeLayout(false);
+            tableLayoutPanel.PerformLayout();
+            tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
+            yearTableLayoutPanel.ResumeLayout(false);
+            yearTableLayoutPanel.PerformLayout();
+            publisherTableLayoutPanel.ResumeLayout(false);
+            publisherTableLayoutPanel.PerformLayout();
+            authorTableLayoutPanel.ResumeLayout(false);
+            authorTableLayoutPanel.PerformLayout();
+            titleTableLayoutPanel.ResumeLayout(false);
+            titleTableLayoutPanel.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -506,28 +635,33 @@
         private TableLayoutPanel mainTableLayoutPanel;
         private ToolStrip toolStrip1;
         private ToolStripButton addButton;
-        private ToolStripButton toolStripButton2;
+        private ToolStripButton cancelButton;
         private TableLayoutPanel fieldsTableLayoutPanel;
-        private TableLayoutPanel tableLayoutPanel23;
-        private MaterialSkin.Controls.MaterialTextBox materialTextBox22;
-        private MaterialSkin.Controls.MaterialLabel materialLabel22;
-        private TableLayoutPanel tableLayoutPanel20;
-        private MaterialSkin.Controls.MaterialTextBox materialTextBox19;
-        private MaterialSkin.Controls.MaterialLabel materialLabel19;
-        private TableLayoutPanel tableLayoutPanel17;
-        private MaterialSkin.Controls.MaterialTextBox materialTextBox16;
-        private MaterialSkin.Controls.MaterialLabel materialLabel16;
-        private TableLayoutPanel tableLayoutPanel14;
-        private MaterialSkin.Controls.MaterialTextBox materialTextBox13;
-        private MaterialSkin.Controls.MaterialLabel materialLabel13;
-        private TableLayoutPanel tableLayoutPanel11;
-        private MaterialSkin.Controls.MaterialTextBox materialTextBox10;
-        private MaterialSkin.Controls.MaterialLabel materialLabel10;
-        private TableLayoutPanel tableLayoutPanel8;
-        private MaterialSkin.Controls.MaterialTextBox materialTextBox7;
-        private MaterialSkin.Controls.MaterialLabel materialLabel7;
+        private TableLayoutPanel totalTableLayoutPanel;
+        private MaterialSkin.Controls.MaterialTextBox totalTextBox;
+        private MaterialSkin.Controls.MaterialLabel totalLabel;
+        private TableLayoutPanel genreTableLayoutPanel;
+        private MaterialSkin.Controls.MaterialLabel genreLabel;
+        private TableLayoutPanel tableLayoutPanel;
+        private MaterialSkin.Controls.MaterialLabel isbnLabel;
+        private TableLayoutPanel yearTableLayoutPanel;
+        private MaterialSkin.Controls.MaterialLabel yearLabel;
+        private TableLayoutPanel publisherTableLayoutPanel;
+        private MaterialSkin.Controls.MaterialTextBox publisherTextBox;
+        private MaterialSkin.Controls.MaterialLabel publisherLabel;
+        private TableLayoutPanel authorTableLayoutPanel;
+        private MaterialSkin.Controls.MaterialTextBox authorTextBox;
+        private MaterialSkin.Controls.MaterialLabel authorLabel;
+        private TableLayoutPanel titleTableLayoutPanel;
+        private MaterialSkin.Controls.MaterialTextBox titleTextBox;
+        private MaterialSkin.Controls.MaterialLabel titleLabel;
+        private MaterialSkin.Controls.MaterialComboBox genreComboBox;
+        private MaterialSkin.Controls.MaterialComboBox yearComboBox;
+        private TableLayoutPanel tableLayoutPanel1;
+        private MaterialSkin.Controls.MaterialMaskedTextBox isbnMaskedTextBox;
         private TableLayoutPanel tableLayoutPanel2;
-        private MaterialSkin.Controls.MaterialTextBox materialTextBox1;
-        private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private MaterialSkin.Controls.MaterialRadioButton isbn10RadioButton;
+        private MaterialSkin.Controls.MaterialRadioButton isbn13RadioButton;
+        private ToolStripButton removeButton;
     }
 }

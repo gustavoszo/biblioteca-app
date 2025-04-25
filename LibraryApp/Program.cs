@@ -1,6 +1,7 @@
 using LibraryApp.Data;
 using LibraryApp.Forms;
 using LibraryApp.Security;
+using LibraryApp.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace LibraryApp
@@ -27,7 +28,7 @@ namespace LibraryApp
                 optionsBuilder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
                 var dbContext = new AppDbContext(optionsBuilder.Options);
 
-                Application.Run(new LibraryForm(dbContext));
+                Application.Run(new LibraryForm(new BookService(dbContext)));
             }
         }
     }

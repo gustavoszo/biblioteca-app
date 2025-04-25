@@ -14,5 +14,19 @@ namespace LibraryApp.Models
         public int Total { get; set; }
         public int QuantityAvailable { get; set; }
         public DateTime DateRegister { get; set; }
+
+        public override string ToString()
+        {
+            return $"Id: {Id}, " +
+           $"Title: {Title}, " +
+           $"Author: {Author}, " +
+           $"Publisher: {Publisher}, " +
+           $"Publish Year: {PublishYear}, " +
+           $"ISBN: {ISBN}, " +
+           $"Genre: {Genre}, " +
+           $"Total: {Total}, " +
+           $"Quantity Available: {QuantityAvailable}, ";
+        }
     }
+
 }

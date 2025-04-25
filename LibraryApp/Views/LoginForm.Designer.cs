@@ -28,39 +28,59 @@
         /// </summary>
         private void InitializeComponent()
         {
+            tableLayoutPanel = new TableLayoutPanel();
             fieldsTableLayoutPanel = new TableLayoutPanel();
             flowLayoutPanel3 = new FlowLayoutPanel();
-            passwordLabel = new Label();
-            flowLayoutPanel2 = new FlowLayoutPanel();
-            usernameLabel = new Label();
+            passwordTextBox = new MaterialSkin.Controls.MaterialTextBox2();
             flowLayoutPanel = new FlowLayoutPanel();
             loginButton = new MaterialSkin.Controls.MaterialButton();
-            mainTableLayoutPanel = new TableLayoutPanel();
+            flowLayoutPanel1 = new FlowLayoutPanel();
             usernameTextBox = new MaterialSkin.Controls.MaterialTextBox();
-            passwordTextBox = new MaterialSkin.Controls.MaterialTextBox();
+            usernameLabel = new MaterialSkin.Controls.MaterialLabel();
+            passwordLabel = new MaterialSkin.Controls.MaterialLabel();
+            tableLayoutPanel.SuspendLayout();
             fieldsTableLayoutPanel.SuspendLayout();
             flowLayoutPanel3.SuspendLayout();
-            flowLayoutPanel2.SuspendLayout();
             flowLayoutPanel.SuspendLayout();
-            mainTableLayoutPanel.SuspendLayout();
+            flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
+            // 
+            // tableLayoutPanel
+            // 
+            tableLayoutPanel.ColumnCount = 1;
+            tableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel.Controls.Add(fieldsTableLayoutPanel, 0, 0);
+            tableLayoutPanel.Dock = DockStyle.Fill;
+            tableLayoutPanel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tableLayoutPanel.Location = new Point(3, 85);
+            tableLayoutPanel.Margin = new Padding(3, 4, 3, 4);
+            tableLayoutPanel.Name = "tableLayoutPanel";
+            tableLayoutPanel.RowCount = 1;
+            tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel.Size = new Size(444, 281);
+            tableLayoutPanel.TabIndex = 0;
             // 
             // fieldsTableLayoutPanel
             // 
-            fieldsTableLayoutPanel.AutoScroll = true;
+            fieldsTableLayoutPanel.Anchor = AnchorStyles.None;
+            fieldsTableLayoutPanel.AutoSize = true;
             fieldsTableLayoutPanel.ColumnCount = 1;
             fieldsTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             fieldsTableLayoutPanel.Controls.Add(flowLayoutPanel3, 0, 1);
-            fieldsTableLayoutPanel.Controls.Add(flowLayoutPanel2, 0, 0);
             fieldsTableLayoutPanel.Controls.Add(flowLayoutPanel, 0, 2);
-            fieldsTableLayoutPanel.Location = new Point(3, 3);
+            fieldsTableLayoutPanel.Controls.Add(flowLayoutPanel1, 0, 0);
+            fieldsTableLayoutPanel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            fieldsTableLayoutPanel.Location = new Point(12, 25);
             fieldsTableLayoutPanel.Name = "fieldsTableLayoutPanel";
             fieldsTableLayoutPanel.RowCount = 3;
             fieldsTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             fieldsTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            fieldsTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 62F));
-            fieldsTableLayoutPanel.Size = new Size(430, 242);
-            fieldsTableLayoutPanel.TabIndex = 2;
+            fieldsTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 61F));
+            fieldsTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 27F));
+            fieldsTableLayoutPanel.Size = new Size(420, 231);
+            fieldsTableLayoutPanel.TabIndex = 4;
             // 
             // flowLayoutPanel3
             // 
@@ -68,50 +88,48 @@
             flowLayoutPanel3.Controls.Add(passwordLabel);
             flowLayoutPanel3.Controls.Add(passwordTextBox);
             flowLayoutPanel3.Dock = DockStyle.Fill;
-            flowLayoutPanel3.Location = new Point(3, 93);
+            flowLayoutPanel3.Location = new Point(3, 88);
             flowLayoutPanel3.Name = "flowLayoutPanel3";
-            flowLayoutPanel3.Size = new Size(424, 84);
+            flowLayoutPanel3.Size = new Size(414, 79);
             flowLayoutPanel3.TabIndex = 1;
             // 
-            // passwordLabel
+            // passwordTextBox
             // 
-            passwordLabel.AutoSize = true;
-            passwordLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            passwordLabel.Location = new Point(3, 0);
-            passwordLabel.Name = "passwordLabel";
-            passwordLabel.Size = new Size(65, 28);
-            passwordLabel.TabIndex = 0;
-            passwordLabel.Text = "Senha";
-            // 
-            // flowLayoutPanel2
-            // 
-            flowLayoutPanel2.AutoSize = true;
-            flowLayoutPanel2.Controls.Add(usernameLabel);
-            flowLayoutPanel2.Controls.Add(usernameTextBox);
-            flowLayoutPanel2.Dock = DockStyle.Fill;
-            flowLayoutPanel2.Location = new Point(3, 3);
-            flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Size = new Size(424, 84);
-            flowLayoutPanel2.TabIndex = 0;
-            // 
-            // usernameLabel
-            // 
-            usernameLabel.AutoSize = true;
-            usernameLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            usernameLabel.Location = new Point(3, 0);
-            usernameLabel.Name = "usernameLabel";
-            usernameLabel.Size = new Size(79, 28);
-            usernameLabel.TabIndex = 0;
-            usernameLabel.Text = "Usuário";
+            passwordTextBox.AnimateReadOnly = false;
+            passwordTextBox.BackgroundImageLayout = ImageLayout.None;
+            passwordTextBox.CharacterCasing = CharacterCasing.Normal;
+            passwordTextBox.Depth = 0;
+            passwordTextBox.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            passwordTextBox.HideSelection = true;
+            passwordTextBox.LeadingIcon = null;
+            passwordTextBox.Location = new Point(3, 23);
+            passwordTextBox.Margin = new Padding(3, 4, 3, 4);
+            passwordTextBox.MaxLength = 32767;
+            passwordTextBox.MouseState = MaterialSkin.MouseState.OUT;
+            passwordTextBox.Name = "passwordTextBox";
+            passwordTextBox.PasswordChar = '●';
+            passwordTextBox.PrefixSuffixText = null;
+            passwordTextBox.ReadOnly = false;
+            passwordTextBox.RightToLeft = RightToLeft.No;
+            passwordTextBox.SelectedText = "";
+            passwordTextBox.SelectionLength = 0;
+            passwordTextBox.SelectionStart = 0;
+            passwordTextBox.ShortcutsEnabled = true;
+            passwordTextBox.Size = new Size(408, 48);
+            passwordTextBox.TabIndex = 1;
+            passwordTextBox.TabStop = false;
+            passwordTextBox.TextAlign = HorizontalAlignment.Left;
+            passwordTextBox.TrailingIcon = null;
+            passwordTextBox.UseSystemPasswordChar = true;
             // 
             // flowLayoutPanel
             // 
             flowLayoutPanel.Anchor = AnchorStyles.None;
             flowLayoutPanel.AutoSize = true;
             flowLayoutPanel.Controls.Add(loginButton);
-            flowLayoutPanel.Location = new Point(172, 187);
+            flowLayoutPanel.Location = new Point(166, 177);
             flowLayoutPanel.Name = "flowLayoutPanel";
-            flowLayoutPanel.Size = new Size(85, 48);
+            flowLayoutPanel.Size = new Size(87, 46);
             flowLayoutPanel.TabIndex = 2;
             // 
             // loginButton
@@ -121,8 +139,8 @@
             loginButton.Depth = 0;
             loginButton.HighEmphasis = true;
             loginButton.Icon = null;
-            loginButton.Location = new Point(4, 6);
-            loginButton.Margin = new Padding(4, 6, 4, 6);
+            loginButton.Location = new Point(5, 5);
+            loginButton.Margin = new Padding(5);
             loginButton.MouseState = MaterialSkin.MouseState.HOVER;
             loginButton.Name = "loginButton";
             loginButton.NoAccentTextColor = Color.Empty;
@@ -133,32 +151,27 @@
             loginButton.UseAccentColor = false;
             loginButton.UseVisualStyleBackColor = true;
             // 
-            // mainTableLayoutPanel
+            // flowLayoutPanel1
             // 
-            mainTableLayoutPanel.Anchor = AnchorStyles.None;
-            mainTableLayoutPanel.AutoSize = true;
-            mainTableLayoutPanel.BackColor = SystemColors.Control;
-            mainTableLayoutPanel.ColumnCount = 1;
-            mainTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            mainTableLayoutPanel.Controls.Add(fieldsTableLayoutPanel, 0, 0);
-            mainTableLayoutPanel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            mainTableLayoutPanel.Location = new Point(3, 71);
-            mainTableLayoutPanel.Name = "mainTableLayoutPanel";
-            mainTableLayoutPanel.RowCount = 1;
-            mainTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 78.125F));
-            mainTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 21.875F));
-            mainTableLayoutPanel.Size = new Size(436, 256);
-            mainTableLayoutPanel.TabIndex = 0;
+            flowLayoutPanel1.AutoSize = true;
+            flowLayoutPanel1.Controls.Add(usernameLabel);
+            flowLayoutPanel1.Controls.Add(usernameTextBox);
+            flowLayoutPanel1.Dock = DockStyle.Fill;
+            flowLayoutPanel1.Location = new Point(3, 4);
+            flowLayoutPanel1.Margin = new Padding(3, 4, 3, 4);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(414, 77);
+            flowLayoutPanel1.TabIndex = 3;
             // 
             // usernameTextBox
             // 
-            usernameTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             usernameTextBox.AnimateReadOnly = false;
             usernameTextBox.BorderStyle = BorderStyle.None;
             usernameTextBox.Depth = 0;
             usernameTextBox.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             usernameTextBox.LeadingIcon = null;
-            usernameTextBox.Location = new Point(3, 31);
+            usernameTextBox.Location = new Point(3, 23);
+            usernameTextBox.Margin = new Padding(3, 4, 3, 4);
             usernameTextBox.MaxLength = 50;
             usernameTextBox.MouseState = MaterialSkin.MouseState.OUT;
             usernameTextBox.Multiline = false;
@@ -168,23 +181,30 @@
             usernameTextBox.Text = "";
             usernameTextBox.TrailingIcon = null;
             // 
-            // passwordTextBox
+            // usernameLabel
             // 
-            passwordTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            passwordTextBox.AnimateReadOnly = false;
-            passwordTextBox.BorderStyle = BorderStyle.None;
-            passwordTextBox.Depth = 0;
-            passwordTextBox.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            passwordTextBox.LeadingIcon = null;
-            passwordTextBox.Location = new Point(3, 31);
-            passwordTextBox.MaxLength = 50;
-            passwordTextBox.MouseState = MaterialSkin.MouseState.OUT;
-            passwordTextBox.Multiline = false;
-            passwordTextBox.Name = "passwordTextBox";
-            passwordTextBox.Size = new Size(408, 50);
-            passwordTextBox.TabIndex = 2;
-            passwordTextBox.Text = "";
-            passwordTextBox.TrailingIcon = null;
+            usernameLabel.AutoSize = true;
+            usernameLabel.Depth = 0;
+            usernameLabel.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            usernameLabel.Location = new Point(3, 0);
+            usernameLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            usernameLabel.Name = "usernameLabel";
+            usernameLabel.Size = new Size(55, 19);
+            usernameLabel.TabIndex = 2;
+            usernameLabel.Text = "Usuário";
+            usernameLabel.Click += materialLabel1_Click;
+            // 
+            // passwordLabel
+            // 
+            passwordLabel.AutoSize = true;
+            passwordLabel.Depth = 0;
+            passwordLabel.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            passwordLabel.Location = new Point(3, 0);
+            passwordLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            passwordLabel.Name = "passwordLabel";
+            passwordLabel.Size = new Size(46, 19);
+            passwordLabel.TabIndex = 2;
+            passwordLabel.Text = "Senha";
             // 
             // LoginForm
             // 
@@ -192,34 +212,37 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(439, 338);
-            Controls.Add(mainTableLayoutPanel);
+            ClientSize = new Size(450, 369);
+            Controls.Add(tableLayoutPanel);
             Name = "LoginForm";
+            Padding = new Padding(3, 85, 3, 3);
             ShowIcon = false;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";
+            tableLayoutPanel.ResumeLayout(false);
+            tableLayoutPanel.PerformLayout();
             fieldsTableLayoutPanel.ResumeLayout(false);
             fieldsTableLayoutPanel.PerformLayout();
             flowLayoutPanel3.ResumeLayout(false);
             flowLayoutPanel3.PerformLayout();
-            flowLayoutPanel2.ResumeLayout(false);
-            flowLayoutPanel2.PerformLayout();
             flowLayoutPanel.ResumeLayout(false);
             flowLayoutPanel.PerformLayout();
-            mainTableLayoutPanel.ResumeLayout(false);
+            flowLayoutPanel1.ResumeLayout(false);
+            flowLayoutPanel1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
+
+        private TableLayoutPanel tableLayoutPanel;
         private TableLayoutPanel fieldsTableLayoutPanel;
         private FlowLayoutPanel flowLayoutPanel3;
-        private Label passwordLabel;
-        private FlowLayoutPanel flowLayoutPanel2;
-        private Label usernameLabel;
-        private TableLayoutPanel mainTableLayoutPanel;
+        private MaterialSkin.Controls.MaterialTextBox2 passwordTextBox;
         private FlowLayoutPanel flowLayoutPanel;
         private MaterialSkin.Controls.MaterialButton loginButton;
-        private MaterialSkin.Controls.MaterialTextBox passwordTextBox;
+        private FlowLayoutPanel flowLayoutPanel1;
         private MaterialSkin.Controls.MaterialTextBox usernameTextBox;
+        private MaterialSkin.Controls.MaterialLabel usernameLabel;
+        private MaterialSkin.Controls.MaterialLabel passwordLabel;
     }
 }

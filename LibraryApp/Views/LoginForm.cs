@@ -43,5 +43,9 @@ namespace LibraryApp.Forms
             return UserSecurity.IsValidCredential(usernameTextBox.Text, passwordTextBox.Text);
         }
 
+        private void materialLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

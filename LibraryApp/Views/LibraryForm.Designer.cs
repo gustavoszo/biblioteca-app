@@ -32,6 +32,7 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             mainTableLayoutPanel = new TableLayoutPanel();
             toolStrip1 = new ToolStrip();
             exitButton = new ToolStripButton();
@@ -48,6 +49,7 @@
             isbnColumn = new DataGridViewTextBoxColumn();
             totalColumn = new DataGridViewTextBoxColumn();
             quantity_availableColumn = new DataGridViewTextBoxColumn();
+            editColumn = new DataGridViewButtonColumn();
             searchToolBar = new Zuby.ADGV.AdvancedDataGridViewSearchToolBar();
             miniToolStrip = new Zuby.ADGV.AdvancedDataGridViewSearchToolBar();
             mainTableLayoutPanel.SuspendLayout();
@@ -192,6 +194,7 @@
             // 
             advancedDataGridView.AllowUserToAddRows = false;
             advancedDataGridView.AllowUserToDeleteRows = false;
+            advancedDataGridView.AllowUserToResizeRows = false;
             advancedDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.Control;
@@ -202,7 +205,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             advancedDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             advancedDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            advancedDataGridView.Columns.AddRange(new DataGridViewColumn[] { TitleColumn, AuthorColumn, PublisherColumn, isbnColumn, totalColumn, quantity_availableColumn });
+            advancedDataGridView.Columns.AddRange(new DataGridViewColumn[] { TitleColumn, AuthorColumn, PublisherColumn, isbnColumn, totalColumn, quantity_availableColumn, editColumn });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
@@ -228,6 +231,9 @@
             advancedDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             advancedDataGridView.RowHeadersVisible = false;
             advancedDataGridView.RowHeadersWidth = 51;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            advancedDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            advancedDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             advancedDataGridView.Size = new Size(921, 340);
             advancedDataGridView.SortStringChangedInvokeBeforeDatasourceUpdate = true;
             advancedDataGridView.TabIndex = 3;
@@ -280,6 +286,16 @@
             quantity_availableColumn.ReadOnly = true;
             quantity_availableColumn.SortMode = DataGridViewColumnSortMode.Programmatic;
             // 
+            // editColumn
+            // 
+            editColumn.HeaderText = "Editar";
+            editColumn.MinimumWidth = 24;
+            editColumn.Name = "editColumn";
+            editColumn.Resizable = DataGridViewTriState.True;
+            editColumn.SortMode = DataGridViewColumnSortMode.Programmatic;
+            editColumn.Text = "Editar";
+            editColumn.UseColumnTextForButtonValue = true;
+            // 
             // searchToolBar
             // 
             searchToolBar.AllowMerge = false;
@@ -320,6 +336,7 @@
             ClientSize = new Size(961, 575);
             Controls.Add(mainTableLayoutPanel);
             Name = "LibraryForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Biblioteca";
             mainTableLayoutPanel.ResumeLayout(false);
             mainTableLayoutPanel.PerformLayout();
@@ -355,5 +372,6 @@
         private DataGridViewTextBoxColumn isbnColumn;
         private DataGridViewTextBoxColumn totalColumn;
         private DataGridViewTextBoxColumn quantity_availableColumn;
+        private DataGridViewButtonColumn editColumn;
     }
 }
