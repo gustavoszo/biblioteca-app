@@ -2,7 +2,7 @@
 
 namespace LibraryApp.Helpers;
 
-public class ISBNValidator
+internal static class ISBNValidator
 {
     private static bool ValidateISBN10(string isbn)
     {

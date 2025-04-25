@@ -45,7 +45,7 @@ namespace LibraryApp.Services
         {
             int booksOnLoan = savedBook.Total - savedBook.QuantityAvailable;
             if (booksOnLoan > updatedBook.Total)
-                throw new BookValidationException($"Titulo: {savedBook.Title}\nISBN: {savedBook.ISBN}\nEste livro possui {booksOnLoan} empréstimo(s) em andamento. Portanto, não é possivel que a quantidade total de livros seja menor que a quantidade de livros emprestados");
+                throw new BookValidationException($"Titulo: {savedBook.Title}\nISBN: {savedBook.ISBN}\nEste livro possui {booksOnLoan} empréstimo(s) em andamento. Portanto, não é possivel que a quantidade total de livros seja menor que a quantidade de livros emprestados.");
 
             savedBook.Title = updatedBook.Title;
             savedBook.Author = updatedBook.Author;

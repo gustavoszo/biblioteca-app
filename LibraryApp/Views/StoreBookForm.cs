@@ -73,17 +73,17 @@ namespace LibraryApp.Views
                 try
                 {
                     _bookService.DeleteBookByIsbn(_editBook.ISBN);
-                    MessageBox.Show($"O livro '{_editBook.Title}' foi removido!'", "Livro removido");
+                    ShowFeedbackMessage($"O livro '{_editBook.Title}' foi removido!'", "Livro removido");
 
                     this.Close();
                 }
                 catch (BookValidationException ex)
                 {
-                    MessageBox.Show(ex.Message, "Erro");
+                    ShowFeedbackMessage(ex.Message, "Erro");
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Ocorreu um erro ao tentar adicionar o livro", "Erro");
+                    ShowFeedbackMessage("Ocorreu um erro ao tentar adicionar o livro", "Erro");
                 }
             }
         }
@@ -98,23 +98,23 @@ namespace LibraryApp.Views
                     if (_editBook == null)
                     {
                         _bookService.CreateBook(book);
-                        MessageBox.Show("Livro adicionado com sucesso!", "Adicionar Livro");
+                        ShowFeedbackMessage("Livro adicionado com sucesso!", "Adicionar Livro");
                     }
                     else
                     {
                         _bookService.UpdateBook(_editBook, book);
-                        MessageBox.Show("Livro atualizado com sucesso!", "Editar Livro");
+                        ShowFeedbackMessage("Livro atualizado com sucesso!", "Editar Livro");
                     }
 
                     this.Close();
                 }
                 catch (BookValidationException ex)
                 {
-                    MessageBox.Show(ex.Message, "Erro");
+                    ShowFeedbackMessage(ex.Message, "Erro");
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Ocorreu um erro ao tentar adicionar o livro", "Erro");
+                    ShowFeedbackMessage("Ocorreu um erro ao tentar adicionar o livro", "Erro");
                 }
             }
         }
@@ -154,18 +154,18 @@ namespace LibraryApp.Views
         {
             if (isbn10RadioButton.Checked && isbnMaskedTextBox.Text.Length != 10)
             {
-                MessageBox.Show("O ISBN-10 deve ser preenchido corretamente", "Adiconar Livro");
+                ShowFeedbackMessage("O ISBN-10 deve ser preenchido corretamente", "Adicionar Livro");
                 return false;
             }
             else if (isbn13RadioButton.Checked && isbnMaskedTextBox.Text.Length != 13)
             {
-                MessageBox.Show("O ISBN-13 deve ser preenchido corretamente", "Adicionar Livro");
+                ShowFeedbackMessage("O ISBN-13 deve ser preenchido corretamente", "Adicionar Livro");
                 return false;
             }
 
             if (!ISBNValidator.ValidateISBN(isbnMaskedTextBox.Text))
             {
-                MessageBox.Show("ISBN inválido", "Adicionar Livro");
+                ShowFeedbackMessage("ISBN inválido", "Adicionar Livro");
                 return false;
             }
 
@@ -176,9 +176,9 @@ namespace LibraryApp.Views
         {
             return new Book()
             {
-                Title = titleTextBox.Text,
-                Author = authorTextBox.Text,
-                Publisher = publisherTextBox.Text,
+                Title = titleTextBox.Text.Trim(),
+                Author = authorTextBox.Text.Trim(),
+                Publisher = publisherTextBox.Text.Trim(),
                 PublishYear = (string)yearComboBox.SelectedItem,
                 ISBN = isbnMaskedTextBox.Text,
                 Genre = (string)genreComboBox.SelectedItem,
@@ -213,5 +213,9 @@ namespace LibraryApp.Views
             addButton.Text = "Atualizar";
         }
 
+        private void ShowFeedbackMessage(string message, string title)
+        {
+            MessageBox.Show(message, title);
+        }
     }
 }

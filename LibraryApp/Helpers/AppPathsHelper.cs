@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LibraryApp.Helpers
 {
-    internal class AppPathsHelper
+    internal static class AppPathsHelper
     {
         public static string BasePath => Path.Combine(
         Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),

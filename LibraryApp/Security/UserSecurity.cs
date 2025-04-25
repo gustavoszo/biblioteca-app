@@ -33,5 +33,21 @@ namespace LibraryApp.Security
                 throw new Exception("Falha ao carregar as credenciais do administrador.", ex);
             }
         }
+
+        public static void RegisterAdmin(string username, string password)
+        {
+            try
+            {
+                var (hash, salt) = HashHelper.HashPassword(password);
+                var admin = new Admin(username, hash, salt);
+
+                var json = JsonSerializer.Serialize(admin);
+                CryptoHelper.EncryptFile(json, _userFilePath, _aesKeyInfo);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

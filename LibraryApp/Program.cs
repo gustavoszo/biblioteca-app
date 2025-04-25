@@ -1,7 +1,9 @@
 using LibraryApp.Data;
 using LibraryApp.Forms;
+using LibraryApp.Helpers;
 using LibraryApp.Security;
 using LibraryApp.Services;
+using LibraryApp.Views;
 using Microsoft.EntityFrameworkCore;
 
 namespace LibraryApp
@@ -17,6 +19,23 @@ namespace LibraryApp
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
+
+            if (!DirectoriesManager.DirectoryExists())
+            {
+                DirectoriesManager.CreateDirectories();
+
+                using var credentialsForm = new CredentialsForm();
+                credentialsForm.ShowDialog();
+
+                if (credentialsForm.DialogResult != DialogResult.OK)
+                {
+                    DirectoriesManager.RemoveDirectories();
+                    return;
+                }
+
+                DbSecurity.ConfigureDatabase();
+            }
+
 
             using var loginForm = new LoginForm();
             loginForm.ShowDialog();

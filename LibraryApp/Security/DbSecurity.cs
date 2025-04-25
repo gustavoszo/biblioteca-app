@@ -29,5 +29,20 @@ namespace LibraryApp.Security
                 throw new Exception("Falha ao carregar a configuração do banco de dados.", ex);
             }
         }
+
+        public static void ConfigureDatabase()
+        {
+            try
+            {
+                var database = new DbConfig("localhost", "root", "root", "library_db");
+
+                var json = JsonSerializer.Serialize(database);
+                CryptoHelper.EncryptFile(json, _dbFilePath, _aesKeyInfo);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }
