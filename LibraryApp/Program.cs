@@ -42,7 +42,10 @@ namespace LibraryApp
 
             if (loginForm.DialogResult == DialogResult.OK)
             {
-                Application.Run(new LibraryForm(new BookService(UnitOfWork.DbContext), new ClientService(UnitOfWork.DbContext)));
+                var dbContext = UnitOfWork.DbContext;
+                var bookService = new BookService(dbContext);
+
+                Application.Run(new LibraryForm(bookService, new ClientService(dbContext), new LoanService(dbContext), new LoanBooksService(dbContext, bookService)));
             }
         }
     }

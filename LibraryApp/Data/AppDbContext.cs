@@ -56,6 +56,7 @@ namespace LibraryApp.Data
 
                 entity.Property(b => b.DateRegister)
                       .IsRequired()
+                      .HasDefaultValueSql("CURRENT_TIMESTAMP")
                       .HasColumnName("date_register");
             });
 
@@ -80,6 +81,7 @@ namespace LibraryApp.Data
 
                 entity.Property(b => b.DateRegister)
                      .IsRequired()
+                     .HasDefaultValueSql("CURRENT_TIMESTAMP")
                      .HasColumnName("date_register");
             });
 
@@ -95,7 +97,12 @@ namespace LibraryApp.Data
 
                 entity.Property(l => l.DateLoan)
                     .IsRequired()
+                    .HasDefaultValueSql("CURRENT_TIMESTAMP")
                     .HasColumnName("date_loan");
+
+                entity.Property(l => l.ReturnDate)
+                    .IsRequired()
+                    .HasColumnName("return_date");
 
                 entity.HasOne(l => l.Client)
                 .WithMany(c => c.Loans)
@@ -107,10 +114,10 @@ namespace LibraryApp.Data
                 entity.HasKey(lb => new { lb.LoanId, lb.BookId });
 
                 entity.Property(lb => lb.LoanId)
-                    .HasColumnName("loan_id");
+                    .HasColumnName("id_loan");
 
                 entity.Property(lb => lb.BookId)
-                    .HasColumnName("book_id");
+                    .HasColumnName("id_book");
 
                 entity.Property(lb => lb.Quantity)
                     .IsRequired()

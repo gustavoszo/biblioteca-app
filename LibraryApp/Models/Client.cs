@@ -12,13 +12,5 @@ namespace LibraryApp.Models
 
         public ICollection<Loan> Loans { get; set; }
 
-        public override string ToString()
-        {
-            return "Nome: " + Name +
-                "Documento: " + Document +
-                "Telefone: " + Phone +
-                "Email: " + Email +
-                "Data de registro: " + DateRegister.ToString();
-        }
     }
 }

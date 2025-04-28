@@ -10,7 +10,14 @@ namespace LibraryApp.Models
         public Client Client { get; set; }
 
         public DateTime DateLoan { get; set; }
+        public DateTime ReturnDate { get; set; }
 
         public ICollection<LoanBook> LoanBooks { get; set; }
+
+        public override string ToString()
+        {
+            return "Id: " + Id +
+                "\nclient: " + DocumentClient;
+        }
     }
 }

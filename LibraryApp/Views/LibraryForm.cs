@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using LibraryApp.Data;
 using LibraryApp.Models;
 using LibraryApp.Services;
@@ -12,15 +13,20 @@ namespace LibraryApp
 
         private readonly BookService _bookService;
         private readonly ClientService _clientService;
+        private readonly LoanService _loanService;
+        private readonly LoanBooksService _loanBookService;
 
-        private List<Book> _books;
+        private List<Book> _books; // Lista com todos os livros cadastrados
+        private List<LoanBook> _loanBooks; // Lista com os livros a serem emprestados
 
-        public LibraryForm(BookService bookService, ClientService clientService)
+        public LibraryForm(BookService bookService, ClientService clientService, LoanService loanService, LoanBooksService loanBookService)
         {
             _bookService = bookService;
             _clientService = clientService;
-            _books = new List<Book>();
+            _loanService = loanService;
+            _loanBookService = loanBookService;
 
+            InitializeVariables();
             InitializeComponent();
             AttachEventHandlers();
         }
@@ -39,19 +45,22 @@ namespace LibraryApp
             // loanTabPage
             bookComboBox.SelectedIndexChanged += BookComboBox_SelectedIndexChanged;
             quantityComboBox.TextChanged += InputFields_TextChanged;
+            loanBookButton.Click += LoanBookButton_Click;
             confirmLoanButton.Click += ConfirmLoanButton_Click;
+            cancelButton.Click += CancelButton_Click;
+            viewLoanButton.Click += ViewLoanButton_Click;
         }
 
         private void LibraryForm_Load(object? sender, EventArgs e)
         {
-            _books = _bookService.GetAllBooks();
-
-            // bookTabPage
-            LoadBooksOnDataGridView(_books);
-
-            // loanTabPage
+            LoadBooksAndBuildView();
             CustomizeLoanCalendar();
-            LoadBooksOnComboBox(_books.ToArray());
+        }
+
+        private void InitializeVariables()
+        {
+            _books = new List<Book>();
+            _loanBooks = new List<LoanBook>();
         }
 
         #endregion
@@ -64,7 +73,9 @@ namespace LibraryApp
             new StoreBookForm(_bookService).ShowDialog();
 
             _books = _bookService.GetAllBooks();
+
             LoadBooksOnDataGridView(_books);
+            LoadBooksOnComboBox(_books.ToArray());
         }
 
         private void AdvancedDataGridView_CellClick(object? sender, DataGridViewCellEventArgs e)
@@ -77,7 +88,7 @@ namespace LibraryApp
                 if (book != null)
                 {
                     new StoreBookForm(_bookService, book).ShowDialog();
-                    LoadBooksOnDataGridView(_bookService.GetAllBooks());
+                    LoadBooksAndBuildView();
                 }
             }
         }
@@ -95,8 +106,25 @@ namespace LibraryApp
 
         private void InputFields_TextChanged(object? sender, EventArgs e)
         {
-            confirmLoanButton.Enabled = bookComboBox.SelectedIndex != -1
+            confirmLoanButton.Enabled = _loanBooks.Count > 0;
+
+            loanBookButton.Enabled = bookComboBox.SelectedIndex != -1
                                   && quantityComboBox.SelectedIndex != -1;
+        }
+
+        private void LoanBookButton_Click(object? sender, EventArgs e)
+        {
+            var selectedBook = bookComboBox.SelectedItem as Book;
+            _loanBooks.Add(new LoanBook()
+            {
+                BookId = selectedBook.Id,
+                Quantity = int.Parse(quantityComboBox.SelectedItem.ToString())
+            });
+
+            quantityComboBox.SelectedIndex = -1;
+            bookComboBox.Items.Remove(selectedBook);
+
+            cancelButton.Enabled = true;
         }
 
         private void ConfirmLoanButton_Click(object? sender, EventArgs e)
@@ -107,12 +135,42 @@ namespace LibraryApp
                 if (client != null)
                 {
                     documentTextBox.Text = client.Document;
+
+                    var loan = new Loan()
+                    {
+                        DocumentClient = client.Document,
+                        ReturnDate = returnDateTimePicker.Value,
+                    };
+                    _loanService.Create(loan);
+
+                    foreach (var loanBook in _loanBooks)
+                    {
+                        loanBook.LoanId = loan.Id;
+                        _loanBookService.Create(loanBook);
+                    }
+                    MessageBox.Show("Locação realizada com sucesso!", "Locação");
+                    CleanLoanBook();
                 }
-            } 
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Erro");
             }
+            catch (Exception)
+            {
+                MessageBox.Show("Ocorreu um erro ao realizar a locação", "Erro");
+            }
+        }
+
+        private void CancelButton_Click(object? sender, EventArgs e)
+        {
+            CleanLoanBook();
+        }
+
+        private void ViewLoanButton_Click(object? sender, EventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            foreach (var loanBook in _loanBooks)
+                sb.AppendLine(loanBook.ToString() + "\n");
+
+            MessageBox.Show(sb.ToString());
         }
 
         #endregion
@@ -125,7 +183,7 @@ namespace LibraryApp
 
         private void CustomizeLoanCalendar()
         {
-            devolutionDateTimePicker.MaxDate = DateTime.Today.AddMonths(3);
+            returnDateTimePicker.MaxDate = DateTime.Today.AddMonths(3);
         }
 
         private void LoadBooksOnComboBox(Book[] books)
@@ -144,7 +202,7 @@ namespace LibraryApp
                 return;
             }
 
-            for (int i=1; i<=quantity; i++)
+            for (int i = 1; i <= quantity; i++)
             {
                 quantityComboBox.Items.Add(i);
             }
@@ -164,6 +222,26 @@ namespace LibraryApp
             }
 
             return client;
+        }
+
+        private void CleanLoanBook()
+        {
+            _loanBooks.Clear();
+            confirmLoanButton.Enabled = false;
+            cancelButton.Enabled = false;
+
+            LoadBooksAndBuildView();
+        }
+
+        private void LoadBooksAndBuildView()
+        {
+            _books = _bookService.GetAllBooks();
+
+            // bookTabPage
+            LoadBooksOnDataGridView(_books);
+
+            // loanTabPage
+            LoadBooksOnComboBox(_books.ToArray());
         }
     }
 }

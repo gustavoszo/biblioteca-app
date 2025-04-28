@@ -23,8 +23,6 @@ namespace LibraryApp.Services
             if(FindClientByEmail(client.Email) != null)
                 throw new ClientValidationException($"O email {client.Email} já está cadastrado");
 
-            client.DateRegister = DateTime.Now;
-
             _dbContext.Clients.Add(client);
             Commit();
         }

@@ -112,9 +112,9 @@ namespace LibraryApp.Views
                 {
                     ShowFeedbackMessage(ex.Message, "Erro");
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    ShowFeedbackMessage("Ocorreu um erro ao tentar adicionar o livro", "Erro");
+                    ShowFeedbackMessage("Ocorreu um erro:" + ex.InnerException.Message, "Erro");
                 }
             }
         }

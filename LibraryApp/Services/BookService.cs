@@ -27,6 +27,7 @@ namespace LibraryApp.Services
         {
             return _dbContext.Books.AsNoTracking().Select(b => new Book
             {
+                Id = b.Id,
                 Title = b.Title,
                 Author = b.Author,
                 Publisher = b.Publisher,
@@ -69,6 +70,11 @@ namespace LibraryApp.Services
 
             _dbContext.Books.Remove(book);
             Commit();
+        }
+
+        public Book? FindBookById(int id)
+        {
+            return _dbContext.Books.FirstOrDefault(b => b.Id == id);
         }
 
         private void Commit()

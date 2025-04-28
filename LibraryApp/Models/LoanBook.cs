@@ -11,5 +11,11 @@ namespace LibraryApp.Models
         public Book Book { get; set; }
 
         public int Quantity { get; set; }
+
+        public override string ToString()
+        {
+            return "ID Livro: " + BookId +
+                "\nQuantidade: " + Quantity;
+        }
     }
 }
