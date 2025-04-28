@@ -42,12 +42,7 @@ namespace LibraryApp
 
             if (loginForm.DialogResult == DialogResult.OK)
             {
-                var connectionString = DbSecurity.LoadDatabaseConfig().BuildConnectionString();
-                var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
-                optionsBuilder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
-                var dbContext = new AppDbContext(optionsBuilder.Options);
-
-                Application.Run(new LibraryForm(new BookService(dbContext)));
+                Application.Run(new LibraryForm(new BookService(UnitOfWork.DbContext), new ClientService(UnitOfWork.DbContext)));
             }
         }
     }
