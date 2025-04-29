@@ -1,6 +1,7 @@
 ﻿using System;
 using LibraryApp.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 
 namespace LibraryApp.Data
 {
@@ -104,9 +105,17 @@ namespace LibraryApp.Data
                     .IsRequired()
                     .HasColumnName("return_date");
 
+                entity.Property(l => l.Returned)
+                    .IsRequired()
+                    .HasColumnName("returned");
+
                 entity.HasOne(l => l.Client)
                 .WithMany(c => c.Loans)
                 .HasForeignKey(l => l.DocumentClient);
+
+                entity.HasMany(l => l.LoanBooks)
+                    .WithOne(lb => lb.Loan)
+                    .HasForeignKey(lb => lb.LoanId);
             });
 
             modelBuilder.Entity<LoanBook>(entity =>

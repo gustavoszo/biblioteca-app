@@ -10,7 +10,7 @@ namespace LibraryApp.Models
         public string? Email { get; set; }
         public DateTime DateRegister { get; set; }
 
-        public ICollection<Loan> Loans { get; set; }
+        public ICollection<Loan> Loans { get; set; } = new List<Loan>();
 
     }
 }

@@ -25,6 +25,15 @@ namespace LibraryApp.Services
             Commit();
         }
 
+        public void ReturnBooksToAvailable(List<LoanBook> loanBooks)
+        {
+            foreach (var loanBook in loanBooks)
+            {
+                loanBook.Book.QuantityAvailable += loanBook.Quantity;
+            }
+            Commit();
+        }
+
         private void Commit()
         {
             _dbContext.SaveChanges();

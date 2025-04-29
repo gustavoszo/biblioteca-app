@@ -12,7 +12,9 @@ namespace LibraryApp.Models
         public DateTime DateLoan { get; set; }
         public DateTime ReturnDate { get; set; }
 
-        public ICollection<LoanBook> LoanBooks { get; set; }
+        public bool Returned { get; set; }    
+
+        public ICollection<LoanBook> LoanBooks { get; set; } = new List<LoanBook>();
 
         public override string ToString()
         {

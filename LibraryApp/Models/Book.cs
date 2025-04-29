@@ -15,7 +15,7 @@ namespace LibraryApp.Models
         public int QuantityAvailable { get; set; }
         public DateTime DateRegister { get; set; }
 
-        public List<LoanBook> LoanBooks { get; set; }
+        public ICollection<LoanBook> LoanBooks { get; set; } = new List<LoanBook>();
 
         public override string ToString()
         {

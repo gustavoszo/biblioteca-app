@@ -4,7 +4,6 @@ using LibraryApp.Helpers;
 using LibraryApp.Security;
 using LibraryApp.Services;
 using LibraryApp.Views;
-using Microsoft.EntityFrameworkCore;
 
 namespace LibraryApp
 {
@@ -44,8 +43,9 @@ namespace LibraryApp
             {
                 var dbContext = UnitOfWork.DbContext;
                 var bookService = new BookService(dbContext);
+                var loanBooksService = new LoanBooksService(dbContext, bookService);
 
-                Application.Run(new LibraryForm(bookService, new ClientService(dbContext), new LoanService(dbContext), new LoanBooksService(dbContext, bookService)));
+                Application.Run(new LibraryForm(bookService, new ClientService(dbContext), new LoanService(dbContext, loanBooksService), loanBooksService));
             }
         }
     }

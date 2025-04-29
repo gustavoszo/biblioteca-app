@@ -60,8 +60,9 @@
             returnDateTimePicker = new DateTimePicker();
             flowLayoutPanel9 = new FlowLayoutPanel();
             confirmLoanButton = new MaterialSkin.Controls.MaterialButton();
-            viewLoanButton = new MaterialSkin.Controls.MaterialButton();
+            loanDetailsButton = new MaterialSkin.Controls.MaterialButton();
             cancelButton = new MaterialSkin.Controls.MaterialButton();
+            viewLoansButton = new MaterialSkin.Controls.MaterialButton();
             bookTabPage = new TabPage();
             tableLayoutPanel2 = new TableLayoutPanel();
             addBookButton = new MaterialSkin.Controls.MaterialButton();
@@ -112,7 +113,7 @@
             mainTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 94.6850357F));
             mainTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 5.31496048F));
             mainTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 15F));
-            mainTableLayoutPanel.Size = new Size(693, 346);
+            mainTableLayoutPanel.Size = new Size(693, 368);
             mainTableLayoutPanel.TabIndex = 0;
             // 
             // toolStrip
@@ -120,9 +121,9 @@
             toolStrip.Dock = DockStyle.Bottom;
             toolStrip.ImageScalingSize = new Size(20, 20);
             toolStrip.Items.AddRange(new ToolStripItem[] { exitButton });
-            toolStrip.Location = new Point(0, 327);
+            toolStrip.Location = new Point(0, 348);
             toolStrip.Name = "toolStrip";
-            toolStrip.Size = new Size(693, 19);
+            toolStrip.Size = new Size(693, 20);
             toolStrip.TabIndex = 5;
             toolStrip.Text = "toolStrip1";
             // 
@@ -134,7 +135,7 @@
             exitButton.Image = (Image)resources.GetObject("exitButton.Image");
             exitButton.ImageTransparentColor = Color.Magenta;
             exitButton.Name = "exitButton";
-            exitButton.Size = new Size(35, 16);
+            exitButton.Size = new Size(35, 17);
             exitButton.Text = "Sair";
             // 
             // tabControl
@@ -147,7 +148,7 @@
             tabControl.Margin = new Padding(3, 2, 3, 2);
             tabControl.Name = "tabControl";
             tabControl.SelectedIndex = 0;
-            tabControl.Size = new Size(687, 323);
+            tabControl.Size = new Size(687, 344);
             tabControl.TabIndex = 1;
             // 
             // loanTabPage
@@ -159,7 +160,7 @@
             loanTabPage.Margin = new Padding(3, 2, 3, 2);
             loanTabPage.Name = "loanTabPage";
             loanTabPage.Padding = new Padding(3, 2, 3, 2);
-            loanTabPage.Size = new Size(679, 289);
+            loanTabPage.Size = new Size(679, 310);
             loanTabPage.TabIndex = 0;
             loanTabPage.Text = "Locação";
             loanTabPage.UseVisualStyleBackColor = true;
@@ -170,14 +171,16 @@
             fieldsTableLayoutPanel.ColumnCount = 2;
             fieldsTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 35F));
             fieldsTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 65F));
-            fieldsTableLayoutPanel.Controls.Add(flowLayoutPanel1, 0, 0);
-            fieldsTableLayoutPanel.Controls.Add(fieldsTwoTableLayoutPanel, 1, 0);
+            fieldsTableLayoutPanel.Controls.Add(flowLayoutPanel1, 0, 1);
+            fieldsTableLayoutPanel.Controls.Add(fieldsTwoTableLayoutPanel, 1, 1);
+            fieldsTableLayoutPanel.Controls.Add(viewLoansButton, 0, 0);
             fieldsTableLayoutPanel.Dock = DockStyle.Fill;
             fieldsTableLayoutPanel.Location = new Point(3, 2);
             fieldsTableLayoutPanel.Name = "fieldsTableLayoutPanel";
-            fieldsTableLayoutPanel.RowCount = 1;
+            fieldsTableLayoutPanel.RowCount = 2;
             fieldsTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            fieldsTableLayoutPanel.Size = new Size(673, 285);
+            fieldsTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 260F));
+            fieldsTableLayoutPanel.Size = new Size(673, 306);
             fieldsTableLayoutPanel.TabIndex = 1;
             // 
             // flowLayoutPanel1
@@ -185,9 +188,9 @@
             flowLayoutPanel1.AutoScroll = true;
             flowLayoutPanel1.Controls.Add(flowLayoutPanel3);
             flowLayoutPanel1.Dock = DockStyle.Fill;
-            flowLayoutPanel1.Location = new Point(4, 4);
+            flowLayoutPanel1.Location = new Point(4, 48);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(228, 277);
+            flowLayoutPanel1.Size = new Size(228, 254);
             flowLayoutPanel1.TabIndex = 0;
             // 
             // flowLayoutPanel3
@@ -239,13 +242,13 @@
             fieldsTwoTableLayoutPanel.Controls.Add(flowLayoutPanel2, 0, 0);
             fieldsTwoTableLayoutPanel.Controls.Add(tableLayoutPanel1, 0, 1);
             fieldsTwoTableLayoutPanel.Dock = DockStyle.Fill;
-            fieldsTwoTableLayoutPanel.Location = new Point(239, 4);
+            fieldsTwoTableLayoutPanel.Location = new Point(239, 48);
             fieldsTwoTableLayoutPanel.Name = "fieldsTwoTableLayoutPanel";
             fieldsTwoTableLayoutPanel.RowCount = 2;
             fieldsTwoTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             fieldsTwoTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             fieldsTwoTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            fieldsTwoTableLayoutPanel.Size = new Size(430, 277);
+            fieldsTwoTableLayoutPanel.Size = new Size(430, 254);
             fieldsTwoTableLayoutPanel.TabIndex = 1;
             // 
             // flowLayoutPanel2
@@ -259,7 +262,7 @@
             flowLayoutPanel2.Dock = DockStyle.Fill;
             flowLayoutPanel2.Location = new Point(5, 5);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Size = new Size(420, 129);
+            flowLayoutPanel2.Size = new Size(420, 118);
             flowLayoutPanel2.TabIndex = 2;
             // 
             // flowLayoutPanel4
@@ -400,12 +403,12 @@
             tableLayoutPanel1.Controls.Add(flowLayoutPanel7, 0, 0);
             tableLayoutPanel1.Controls.Add(flowLayoutPanel9, 0, 1);
             tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(5, 142);
+            tableLayoutPanel1.Location = new Point(5, 131);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new Size(420, 130);
+            tableLayoutPanel1.Size = new Size(420, 118);
             tableLayoutPanel1.TabIndex = 3;
             // 
             // flowLayoutPanel7
@@ -416,7 +419,7 @@
             flowLayoutPanel7.Controls.Add(returnDateTimePicker);
             flowLayoutPanel7.Location = new Point(3, 3);
             flowLayoutPanel7.Name = "flowLayoutPanel7";
-            flowLayoutPanel7.Size = new Size(334, 54);
+            flowLayoutPanel7.Size = new Size(334, 53);
             flowLayoutPanel7.TabIndex = 6;
             // 
             // devolutionLabel
@@ -447,10 +450,10 @@
             flowLayoutPanel9.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             flowLayoutPanel9.AutoSize = true;
             flowLayoutPanel9.Controls.Add(confirmLoanButton);
-            flowLayoutPanel9.Controls.Add(viewLoanButton);
+            flowLayoutPanel9.Controls.Add(loanDetailsButton);
             flowLayoutPanel9.Controls.Add(cancelButton);
             flowLayoutPanel9.Font = new Font("Segoe UI", 10F);
-            flowLayoutPanel9.Location = new Point(3, 79);
+            flowLayoutPanel9.Location = new Point(3, 67);
             flowLayoutPanel9.Name = "flowLayoutPanel9";
             flowLayoutPanel9.Size = new Size(382, 48);
             flowLayoutPanel9.TabIndex = 7;
@@ -476,25 +479,25 @@
             confirmLoanButton.UseAccentColor = false;
             confirmLoanButton.UseVisualStyleBackColor = true;
             // 
-            // viewLoanButton
+            // loanDetailsButton
             // 
-            viewLoanButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            viewLoanButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            viewLoanButton.Depth = 0;
-            viewLoanButton.Font = new Font("Segoe UI", 12F);
-            viewLoanButton.HighEmphasis = true;
-            viewLoanButton.Icon = null;
-            viewLoanButton.Location = new Point(171, 6);
-            viewLoanButton.Margin = new Padding(4, 6, 4, 6);
-            viewLoanButton.MouseState = MaterialSkin.MouseState.HOVER;
-            viewLoanButton.Name = "viewLoanButton";
-            viewLoanButton.NoAccentTextColor = Color.Empty;
-            viewLoanButton.Size = new Size(103, 36);
-            viewLoanButton.TabIndex = 10;
-            viewLoanButton.Text = "Visualizar";
-            viewLoanButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            viewLoanButton.UseAccentColor = false;
-            viewLoanButton.UseVisualStyleBackColor = true;
+            loanDetailsButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            loanDetailsButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            loanDetailsButton.Depth = 0;
+            loanDetailsButton.Font = new Font("Segoe UI", 12F);
+            loanDetailsButton.HighEmphasis = true;
+            loanDetailsButton.Icon = null;
+            loanDetailsButton.Location = new Point(171, 6);
+            loanDetailsButton.Margin = new Padding(4, 6, 4, 6);
+            loanDetailsButton.MouseState = MaterialSkin.MouseState.HOVER;
+            loanDetailsButton.Name = "loanDetailsButton";
+            loanDetailsButton.NoAccentTextColor = Color.Empty;
+            loanDetailsButton.Size = new Size(103, 36);
+            loanDetailsButton.TabIndex = 10;
+            loanDetailsButton.Text = "Visualizar";
+            loanDetailsButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            loanDetailsButton.UseAccentColor = false;
+            loanDetailsButton.UseVisualStyleBackColor = true;
             // 
             // cancelButton
             // 
@@ -516,6 +519,25 @@
             cancelButton.UseAccentColor = false;
             cancelButton.UseVisualStyleBackColor = true;
             // 
+            // viewLoansButton
+            // 
+            viewLoansButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            viewLoansButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            viewLoansButton.Depth = 0;
+            viewLoansButton.HighEmphasis = true;
+            viewLoansButton.Icon = null;
+            viewLoansButton.Location = new Point(5, 7);
+            viewLoansButton.Margin = new Padding(4, 6, 4, 6);
+            viewLoansButton.MouseState = MaterialSkin.MouseState.HOVER;
+            viewLoansButton.Name = "viewLoansButton";
+            viewLoansButton.NoAccentTextColor = Color.Empty;
+            viewLoansButton.Size = new Size(96, 31);
+            viewLoansButton.TabIndex = 2;
+            viewLoansButton.Text = "Locações";
+            viewLoansButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            viewLoansButton.UseAccentColor = false;
+            viewLoansButton.UseVisualStyleBackColor = true;
+            // 
             // bookTabPage
             // 
             bookTabPage.Controls.Add(tableLayoutPanel2);
@@ -523,7 +545,7 @@
             bookTabPage.Margin = new Padding(3, 2, 3, 2);
             bookTabPage.Name = "bookTabPage";
             bookTabPage.Padding = new Padding(3, 2, 3, 2);
-            bookTabPage.Size = new Size(679, 289);
+            bookTabPage.Size = new Size(679, 310);
             bookTabPage.TabIndex = 1;
             bookTabPage.Text = "Livros";
             bookTabPage.UseVisualStyleBackColor = true;
@@ -545,7 +567,7 @@
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 11.6883116F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 88.31169F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 22F));
-            tableLayoutPanel2.Size = new Size(673, 285);
+            tableLayoutPanel2.Size = new Size(673, 306);
             tableLayoutPanel2.TabIndex = 0;
             // 
             // addBookButton
@@ -561,7 +583,7 @@
             addBookButton.MouseState = MaterialSkin.MouseState.HOVER;
             addBookButton.Name = "addBookButton";
             addBookButton.NoAccentTextColor = Color.Empty;
-            addBookButton.Size = new Size(143, 25);
+            addBookButton.Size = new Size(143, 27);
             addBookButton.TabIndex = 0;
             addBookButton.Text = "Adicionar livro";
             addBookButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -577,13 +599,13 @@
             tableLayoutPanel3.Controls.Add(advancedDataGridView, 0, 1);
             tableLayoutPanel3.Controls.Add(searchToolBar, 0, 0);
             tableLayoutPanel3.Dock = DockStyle.Fill;
-            tableLayoutPanel3.Location = new Point(3, 35);
+            tableLayoutPanel3.Location = new Point(3, 37);
             tableLayoutPanel3.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 2;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 6.4837904F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 93.51621F));
-            tableLayoutPanel3.Size = new Size(667, 248);
+            tableLayoutPanel3.Size = new Size(667, 267);
             tableLayoutPanel3.TabIndex = 3;
             // 
             // advancedDataGridView
@@ -613,7 +635,7 @@
             advancedDataGridView.Dock = DockStyle.Fill;
             advancedDataGridView.FilterAndSortEnabled = true;
             advancedDataGridView.FilterStringChangedInvokeBeforeDatasourceUpdate = true;
-            advancedDataGridView.Location = new Point(4, 19);
+            advancedDataGridView.Location = new Point(4, 21);
             advancedDataGridView.Margin = new Padding(3, 2, 3, 2);
             advancedDataGridView.MaxFilterButtonImageHeight = 23;
             advancedDataGridView.Name = "advancedDataGridView";
@@ -631,7 +653,7 @@
             dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
             advancedDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle8;
             advancedDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            advancedDataGridView.Size = new Size(659, 226);
+            advancedDataGridView.Size = new Size(659, 243);
             advancedDataGridView.SortStringChangedInvokeBeforeDatasourceUpdate = true;
             advancedDataGridView.TabIndex = 3;
             // 
@@ -730,7 +752,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(699, 396);
+            ClientSize = new Size(699, 418);
             Controls.Add(mainTableLayoutPanel);
             Margin = new Padding(3, 2, 3, 2);
             Name = "LibraryForm";
@@ -744,6 +766,7 @@
             tabControl.ResumeLayout(false);
             loanTabPage.ResumeLayout(false);
             fieldsTableLayoutPanel.ResumeLayout(false);
+            fieldsTableLayoutPanel.PerformLayout();
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
             flowLayoutPanel3.ResumeLayout(false);
@@ -817,6 +840,7 @@
         private FlowLayoutPanel flowLayoutPanel9;
         private MaterialSkin.Controls.MaterialButton confirmLoanButton;
         private MaterialSkin.Controls.MaterialButton cancelButton;
-        private MaterialSkin.Controls.MaterialButton viewLoanButton;
+        private MaterialSkin.Controls.MaterialButton loanDetailsButton;
+        private MaterialSkin.Controls.MaterialButton viewLoansButton;
     }
 }

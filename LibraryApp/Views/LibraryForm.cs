@@ -48,7 +48,8 @@ namespace LibraryApp
             loanBookButton.Click += LoanBookButton_Click;
             confirmLoanButton.Click += ConfirmLoanButton_Click;
             cancelButton.Click += CancelButton_Click;
-            viewLoanButton.Click += ViewLoanButton_Click;
+            loanDetailsButton.Click += LoanDetailsButton_Click;
+            viewLoansButton.Click += ViewLoansButton_Click;
         }
 
         private void LibraryForm_Load(object? sender, EventArgs e)
@@ -163,7 +164,7 @@ namespace LibraryApp
             CleanLoanBook();
         }
 
-        private void ViewLoanButton_Click(object? sender, EventArgs e)
+        private void LoanDetailsButton_Click(object? sender, EventArgs e)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -171,6 +172,11 @@ namespace LibraryApp
                 sb.AppendLine(loanBook.ToString() + "\n");
 
             MessageBox.Show(sb.ToString());
+        }
+
+        private void ViewLoansButton_Click(object? sender, EventArgs e)
+        {
+            new LoansForm(_loanService).ShowDialog();
         }
 
         #endregion
@@ -229,6 +235,7 @@ namespace LibraryApp
             _loanBooks.Clear();
             confirmLoanButton.Enabled = false;
             cancelButton.Enabled = false;
+            documentTextBox.Text = string.Empty;
 
             LoadBooksAndBuildView();
         }
