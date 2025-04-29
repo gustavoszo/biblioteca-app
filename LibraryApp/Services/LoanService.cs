@@ -22,7 +22,7 @@ namespace LibraryApp.Services
             Commit();
         }
 
-        public Loan FindBookById(int idLoan)
+        public Loan FindLoanById(int idLoan)
         {
             return _dbContext.Loans.FirstOrDefault(l => l.Id == idLoan);
         }

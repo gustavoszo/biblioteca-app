@@ -47,11 +47,12 @@ namespace LibraryApp.Views
             {
                 try
                 {
-                    Client = InstantiateClient();
+                    var client = InstantiateClient();
 
-                    _clientService.CreateClient(Client);
+                    _clientService.CreateClient(client);
                     ShowFeedbackMessage("Usuário cadastrado!", "Cadastro de cliente");
 
+                    Client = client;
                     this.Close();
                 }
                 catch (ClientValidationException ex)

@@ -135,8 +135,6 @@ namespace LibraryApp
                 var client = SearchClient(documentTextBox.Text.Trim());
                 if (client != null)
                 {
-                    documentTextBox.Text = client.Document;
-
                     var loan = new Loan()
                     {
                         DocumentClient = client.Document,
@@ -168,8 +166,12 @@ namespace LibraryApp
         {
             StringBuilder sb = new StringBuilder();
 
+            Book book;
             foreach (var loanBook in _loanBooks)
-                sb.AppendLine(loanBook.ToString() + "\n");
+            {
+                book = _books.FirstOrDefault(b => b.Id == loanBook.BookId);
+                sb.AppendLine($"Livro: {book.Title}\nQuantidade: {loanBook.Quantity}\n");
+            }
 
             MessageBox.Show(sb.ToString());
         }
@@ -177,6 +179,8 @@ namespace LibraryApp
         private void ViewLoansButton_Click(object? sender, EventArgs e)
         {
             new LoansForm(_loanService).ShowDialog();
+
+            LoadBooksAndBuildView();
         }
 
         #endregion
@@ -189,6 +193,7 @@ namespace LibraryApp
 
         private void CustomizeLoanCalendar()
         {
+            returnDateTimePicker.MinDate = DateTime.Today;
             returnDateTimePicker.MaxDate = DateTime.Today.AddMonths(3);
         }
 
@@ -242,6 +247,7 @@ namespace LibraryApp
 
         private void LoadBooksAndBuildView()
         {
+            fieldsTableLayoutPanel.Enabled = false;
             _books = _bookService.GetAllBooks();
 
             // bookTabPage
@@ -249,6 +255,7 @@ namespace LibraryApp
 
             // loanTabPage
             LoadBooksOnComboBox(_books.ToArray());
+            fieldsTableLayoutPanel.Enabled = true;
         }
     }
 }

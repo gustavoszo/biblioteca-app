@@ -2,6 +2,7 @@
 using LibraryApp.Services;
 using MaterialSkin.Controls;
 using System;
+using System.Text;
 
 namespace LibraryApp.Views
 {
@@ -9,10 +10,12 @@ namespace LibraryApp.Views
     {
 
         private readonly LoanService _loanService;
+        private List<Loan> _loans;
 
         public LoansForm(LoanService loanService)
         {
             _loanService = loanService;
+            _loans = new List<Loan>();
 
             InitializeComponent();
             AttachEventHandlers();
@@ -26,19 +29,29 @@ namespace LibraryApp.Views
 
         private void LoansForm_Load(object? sender, EventArgs e)
         {
-            LoadBooksOnDataGridView(_loanService.GetAllLoans());
+            _loans = _loanService.GetAllLoans();
+            LoadBooksOnDataGridView(_loans);
         }
 
         private void AdvancedDataGridView_CellClick(object? sender, DataGridViewCellEventArgs e)
         {
-            if (advancedDataGridView.Columns[e.ColumnIndex].Name == "returnColumn" && e.RowIndex >= 0)
+            if (e.RowIndex >= 0)
             {
                 var idLoan = advancedDataGridView.Rows[e.RowIndex].Cells["idLoanColumn"].Value?.ToString();
-                var loan = _loanService.FindBookById(int.Parse(idLoan));
+                var loan = _loanService.FindLoanById(int.Parse(idLoan));
 
-                if (ReturnLoan(loan))
+                if (advancedDataGridView.Columns[e.ColumnIndex].Name == "returnColumn")
                 {
-                    LoadBooksOnDataGridView(_loanService.GetAllLoans());
+                    if (ReturnLoan(loan))
+                    {
+                        _loans = _loanService.GetAllLoans();
+                        LoadBooksOnDataGridView(_loans);
+                    }
+                }
+
+                else if (advancedDataGridView.Columns[e.ColumnIndex].Name == "booksColumn")
+                {
+                    ShowBooksByLoan(loan.Id);
                 }
             }
         }
@@ -67,11 +80,20 @@ namespace LibraryApp.Views
             advancedDataGridView.Rows.Clear();
             foreach (var loan in loans)
             {
-                foreach (var loanBook in loan.LoanBooks)
-                {
-                    advancedDataGridView.Rows.Add(loan.Client.Name, loan.Client.Document, loan.Id, loan.DateLoan, loan.ReturnDate.ToShortDateString(), loanBook.Book.Title, loanBook.Quantity);
-                }
+                advancedDataGridView.Rows.Add(loan.Client.Name, loan.Client.Document, loan.Id, loan.DateLoan, loan.ReturnDate.ToShortDateString());
             }
+        }
+
+        private void ShowBooksByLoan(int id)
+        {
+            var loan = _loans.FirstOrDefault(l => l.Id == id); // Esse loan contém os relacionamentos atribuidos na busca GetAll do ef
+
+            StringBuilder sb = new StringBuilder();
+
+            foreach (var loanBook in loan.LoanBooks)
+                sb.AppendLine($"Livro: {loanBook.Book.Title}\nQuantidade: {loanBook.Quantity}\n");
+
+            MessageBox.Show(sb.ToString());
         }
     }
 }

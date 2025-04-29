@@ -37,17 +37,16 @@
             tableLayoutPanel2 = new TableLayoutPanel();
             tableLayoutPanel3 = new TableLayoutPanel();
             advancedDataGridView = new Zuby.ADGV.AdvancedDataGridView();
+            searchToolBar = new Zuby.ADGV.AdvancedDataGridViewSearchToolBar();
+            toolStrip1 = new ToolStrip();
+            closeButton = new ToolStripButton();
             NameColumn = new DataGridViewTextBoxColumn();
             DocumentColumn = new DataGridViewTextBoxColumn();
             idLoanColumn = new DataGridViewTextBoxColumn();
             loanDateColumn = new DataGridViewTextBoxColumn();
             returnDateColumn = new DataGridViewTextBoxColumn();
-            bookColumn = new DataGridViewTextBoxColumn();
-            quantityColumn = new DataGridViewTextBoxColumn();
+            booksColumn = new DataGridViewButtonColumn();
             returnColumn = new DataGridViewButtonColumn();
-            searchToolBar = new Zuby.ADGV.AdvancedDataGridViewSearchToolBar();
-            toolStrip1 = new ToolStrip();
-            closeButton = new ToolStripButton();
             tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)advancedDataGridView).BeginInit();
@@ -125,7 +124,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             advancedDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             advancedDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            advancedDataGridView.Columns.AddRange(new DataGridViewColumn[] { NameColumn, DocumentColumn, idLoanColumn, loanDateColumn, returnDateColumn, bookColumn, quantityColumn, returnColumn });
+            advancedDataGridView.Columns.AddRange(new DataGridViewColumn[] { NameColumn, DocumentColumn, idLoanColumn, loanDateColumn, returnDateColumn, booksColumn, returnColumn });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
@@ -158,6 +157,41 @@
             advancedDataGridView.Size = new Size(819, 317);
             advancedDataGridView.SortStringChangedInvokeBeforeDatasourceUpdate = true;
             advancedDataGridView.TabIndex = 4;
+            // 
+            // searchToolBar
+            // 
+            searchToolBar.AllowMerge = false;
+            searchToolBar.Dock = DockStyle.Fill;
+            searchToolBar.GripStyle = ToolStripGripStyle.Hidden;
+            searchToolBar.ImageScalingSize = new Size(20, 20);
+            searchToolBar.Location = new Point(1, 1);
+            searchToolBar.MaximumSize = new Size(0, 20);
+            searchToolBar.MinimumSize = new Size(0, 20);
+            searchToolBar.Name = "searchToolBar";
+            searchToolBar.RenderMode = ToolStripRenderMode.Professional;
+            searchToolBar.Size = new Size(825, 20);
+            searchToolBar.TabIndex = 0;
+            searchToolBar.Text = "advancedDataGridViewSearchToolBar1";
+            // 
+            // toolStrip1
+            // 
+            toolStrip1.Dock = DockStyle.Bottom;
+            toolStrip1.Items.AddRange(new ToolStripItem[] { closeButton });
+            toolStrip1.Location = new Point(0, 353);
+            toolStrip1.Name = "toolStrip1";
+            toolStrip1.Size = new Size(833, 25);
+            toolStrip1.TabIndex = 5;
+            toolStrip1.Text = "toolStrip1";
+            // 
+            // closeButton
+            // 
+            closeButton.Alignment = ToolStripItemAlignment.Right;
+            closeButton.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            closeButton.Image = (Image)resources.GetObject("closeButton.Image");
+            closeButton.ImageTransparentColor = Color.Magenta;
+            closeButton.Name = "closeButton";
+            closeButton.Size = new Size(46, 22);
+            closeButton.Text = "Fechar";
             // 
             // NameColumn
             // 
@@ -199,21 +233,16 @@
             returnDateColumn.ReadOnly = true;
             returnDateColumn.SortMode = DataGridViewColumnSortMode.Programmatic;
             // 
-            // bookColumn
+            // booksColumn
             // 
-            bookColumn.HeaderText = "Livro";
-            bookColumn.MinimumWidth = 24;
-            bookColumn.Name = "bookColumn";
-            bookColumn.ReadOnly = true;
-            bookColumn.SortMode = DataGridViewColumnSortMode.Programmatic;
-            // 
-            // quantityColumn
-            // 
-            quantityColumn.HeaderText = "Quantidade";
-            quantityColumn.MinimumWidth = 24;
-            quantityColumn.Name = "quantityColumn";
-            quantityColumn.ReadOnly = true;
-            quantityColumn.SortMode = DataGridViewColumnSortMode.Programmatic;
+            booksColumn.HeaderText = "Livros";
+            booksColumn.MinimumWidth = 24;
+            booksColumn.Name = "booksColumn";
+            booksColumn.ReadOnly = true;
+            booksColumn.Resizable = DataGridViewTriState.True;
+            booksColumn.SortMode = DataGridViewColumnSortMode.Programmatic;
+            booksColumn.Text = "Visualizar";
+            booksColumn.UseColumnTextForButtonValue = true;
             // 
             // returnColumn
             // 
@@ -224,41 +253,6 @@
             returnColumn.SortMode = DataGridViewColumnSortMode.Programmatic;
             returnColumn.Text = "Devolver";
             returnColumn.UseColumnTextForButtonValue = true;
-            // 
-            // searchToolBar
-            // 
-            searchToolBar.AllowMerge = false;
-            searchToolBar.Dock = DockStyle.Fill;
-            searchToolBar.GripStyle = ToolStripGripStyle.Hidden;
-            searchToolBar.ImageScalingSize = new Size(20, 20);
-            searchToolBar.Location = new Point(1, 1);
-            searchToolBar.MaximumSize = new Size(0, 20);
-            searchToolBar.MinimumSize = new Size(0, 20);
-            searchToolBar.Name = "searchToolBar";
-            searchToolBar.RenderMode = ToolStripRenderMode.Professional;
-            searchToolBar.Size = new Size(825, 20);
-            searchToolBar.TabIndex = 0;
-            searchToolBar.Text = "advancedDataGridViewSearchToolBar1";
-            // 
-            // toolStrip1
-            // 
-            toolStrip1.Dock = DockStyle.Bottom;
-            toolStrip1.Items.AddRange(new ToolStripItem[] { closeButton });
-            toolStrip1.Location = new Point(0, 353);
-            toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(833, 25);
-            toolStrip1.TabIndex = 5;
-            toolStrip1.Text = "toolStrip1";
-            // 
-            // closeButton
-            // 
-            closeButton.Alignment = ToolStripItemAlignment.Right;
-            closeButton.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            closeButton.Image = (Image)resources.GetObject("closeButton.Image");
-            closeButton.ImageTransparentColor = Color.Magenta;
-            closeButton.Name = "closeButton";
-            closeButton.Size = new Size(46, 22);
-            closeButton.Text = "Fechar";
             // 
             // LoansForm
             // 
@@ -292,8 +286,7 @@
         private DataGridViewTextBoxColumn idLoanColumn;
         private DataGridViewTextBoxColumn loanDateColumn;
         private DataGridViewTextBoxColumn returnDateColumn;
-        private DataGridViewTextBoxColumn bookColumn;
-        private DataGridViewTextBoxColumn quantityColumn;
+        private DataGridViewButtonColumn booksColumn;
         private DataGridViewButtonColumn returnColumn;
     }
 }
