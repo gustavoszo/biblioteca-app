@@ -4,6 +4,7 @@ using LibraryApp.Helpers;
 using LibraryApp.Security;
 using LibraryApp.Services;
 using LibraryApp.Views;
+using System.Drawing.Printing;
 
 namespace LibraryApp
 {
@@ -45,7 +46,7 @@ namespace LibraryApp
                 var bookService = new BookService(dbContext);
                 var loanBooksService = new LoanBooksService(dbContext, bookService);
 
-                Application.Run(new LibraryForm(bookService, new ClientService(dbContext), new LoanService(dbContext, loanBooksService), loanBooksService));
+                Application.Run(new LibraryForm(bookService, new ClientService(dbContext), new LoanService(dbContext, loanBooksService), loanBooksService, new PrintPageService(new PrintDocument())));
             }
         }
     }

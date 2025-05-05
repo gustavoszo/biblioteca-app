@@ -15,16 +15,19 @@ namespace LibraryApp
         private readonly ClientService _clientService;
         private readonly LoanService _loanService;
         private readonly LoanBooksService _loanBookService;
+        private readonly PrintPageService _printPageService;
 
         private List<Book> _books; // Lista com todos os livros cadastrados
         private List<LoanBook> _loanBooks; // Lista com os livros a serem emprestados
 
-        public LibraryForm(BookService bookService, ClientService clientService, LoanService loanService, LoanBooksService loanBookService)
+        public LibraryForm(BookService bookService, ClientService clientService, 
+            LoanService loanService, LoanBooksService loanBookService, PrintPageService printPageService)
         {
             _bookService = bookService;
             _clientService = clientService;
             _loanService = loanService;
             _loanBookService = loanBookService;
+            _printPageService = printPageService;
 
             InitializeVariables();
             InitializeComponent();
@@ -149,6 +152,9 @@ namespace LibraryApp
                     }
                     MessageBox.Show("Locação realizada com sucesso!", "Locação");
                     CleanLoanBook();
+
+                    _printPageService.Loan = _loanService.FindLoanById(loan.Id);
+                    _printPageService.PreviewPage();
                 }
             }
             catch (Exception)

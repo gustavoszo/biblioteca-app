@@ -60,8 +60,8 @@
             returnDateTimePicker = new DateTimePicker();
             flowLayoutPanel9 = new FlowLayoutPanel();
             confirmLoanButton = new MaterialSkin.Controls.MaterialButton();
-            loanDetailsButton = new MaterialSkin.Controls.MaterialButton();
             cancelButton = new MaterialSkin.Controls.MaterialButton();
+            loanDetailsButton = new MaterialSkin.Controls.MaterialButton();
             viewLoansButton = new MaterialSkin.Controls.MaterialButton();
             bookTabPage = new TabPage();
             tableLayoutPanel2 = new TableLayoutPanel();
@@ -178,8 +178,8 @@
             fieldsTableLayoutPanel.Location = new Point(3, 2);
             fieldsTableLayoutPanel.Name = "fieldsTableLayoutPanel";
             fieldsTableLayoutPanel.RowCount = 2;
-            fieldsTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            fieldsTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 260F));
+            fieldsTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
+            fieldsTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 85F));
             fieldsTableLayoutPanel.Size = new Size(673, 306);
             fieldsTableLayoutPanel.TabIndex = 1;
             // 
@@ -188,9 +188,9 @@
             flowLayoutPanel1.AutoScroll = true;
             flowLayoutPanel1.Controls.Add(flowLayoutPanel3);
             flowLayoutPanel1.Dock = DockStyle.Fill;
-            flowLayoutPanel1.Location = new Point(4, 48);
+            flowLayoutPanel1.Location = new Point(4, 50);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(228, 254);
+            flowLayoutPanel1.Size = new Size(228, 252);
             flowLayoutPanel1.TabIndex = 0;
             // 
             // flowLayoutPanel3
@@ -206,6 +206,7 @@
             // 
             // documentLabel
             // 
+            documentLabel.Anchor = AnchorStyles.Left;
             documentLabel.AutoSize = true;
             documentLabel.Depth = 0;
             documentLabel.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
@@ -242,13 +243,13 @@
             fieldsTwoTableLayoutPanel.Controls.Add(flowLayoutPanel2, 0, 0);
             fieldsTwoTableLayoutPanel.Controls.Add(tableLayoutPanel1, 0, 1);
             fieldsTwoTableLayoutPanel.Dock = DockStyle.Fill;
-            fieldsTwoTableLayoutPanel.Location = new Point(239, 48);
+            fieldsTwoTableLayoutPanel.Location = new Point(239, 50);
             fieldsTwoTableLayoutPanel.Name = "fieldsTwoTableLayoutPanel";
             fieldsTwoTableLayoutPanel.RowCount = 2;
             fieldsTwoTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             fieldsTwoTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             fieldsTwoTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            fieldsTwoTableLayoutPanel.Size = new Size(430, 254);
+            fieldsTwoTableLayoutPanel.Size = new Size(430, 252);
             fieldsTwoTableLayoutPanel.TabIndex = 1;
             // 
             // flowLayoutPanel2
@@ -262,7 +263,7 @@
             flowLayoutPanel2.Dock = DockStyle.Fill;
             flowLayoutPanel2.Location = new Point(5, 5);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Size = new Size(420, 118);
+            flowLayoutPanel2.Size = new Size(420, 117);
             flowLayoutPanel2.TabIndex = 2;
             // 
             // flowLayoutPanel4
@@ -403,12 +404,12 @@
             tableLayoutPanel1.Controls.Add(flowLayoutPanel7, 0, 0);
             tableLayoutPanel1.Controls.Add(flowLayoutPanel9, 0, 1);
             tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(5, 131);
+            tableLayoutPanel1.Location = new Point(5, 130);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new Size(420, 118);
+            tableLayoutPanel1.Size = new Size(420, 117);
             tableLayoutPanel1.TabIndex = 3;
             // 
             // flowLayoutPanel7
@@ -419,7 +420,7 @@
             flowLayoutPanel7.Controls.Add(returnDateTimePicker);
             flowLayoutPanel7.Location = new Point(3, 3);
             flowLayoutPanel7.Name = "flowLayoutPanel7";
-            flowLayoutPanel7.Size = new Size(334, 53);
+            flowLayoutPanel7.Size = new Size(334, 52);
             flowLayoutPanel7.TabIndex = 6;
             // 
             // devolutionLabel
@@ -450,10 +451,10 @@
             flowLayoutPanel9.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             flowLayoutPanel9.AutoSize = true;
             flowLayoutPanel9.Controls.Add(confirmLoanButton);
-            flowLayoutPanel9.Controls.Add(loanDetailsButton);
             flowLayoutPanel9.Controls.Add(cancelButton);
+            flowLayoutPanel9.Controls.Add(loanDetailsButton);
             flowLayoutPanel9.Font = new Font("Segoe UI", 10F);
-            flowLayoutPanel9.Location = new Point(3, 67);
+            flowLayoutPanel9.Location = new Point(3, 66);
             flowLayoutPanel9.Name = "flowLayoutPanel9";
             flowLayoutPanel9.Size = new Size(382, 48);
             flowLayoutPanel9.TabIndex = 7;
@@ -479,26 +480,6 @@
             confirmLoanButton.UseAccentColor = false;
             confirmLoanButton.UseVisualStyleBackColor = true;
             // 
-            // loanDetailsButton
-            // 
-            loanDetailsButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            loanDetailsButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            loanDetailsButton.Depth = 0;
-            loanDetailsButton.Font = new Font("Segoe UI", 12F);
-            loanDetailsButton.HighEmphasis = true;
-            loanDetailsButton.Icon = null;
-            loanDetailsButton.Location = new Point(171, 6);
-            loanDetailsButton.Margin = new Padding(4, 6, 4, 6);
-            loanDetailsButton.MouseState = MaterialSkin.MouseState.HOVER;
-            loanDetailsButton.Name = "loanDetailsButton";
-            loanDetailsButton.NoAccentTextColor = Color.Empty;
-            loanDetailsButton.Size = new Size(103, 36);
-            loanDetailsButton.TabIndex = 10;
-            loanDetailsButton.Text = "Visualizar";
-            loanDetailsButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            loanDetailsButton.UseAccentColor = false;
-            loanDetailsButton.UseVisualStyleBackColor = true;
-            // 
             // cancelButton
             // 
             cancelButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
@@ -507,7 +488,7 @@
             cancelButton.Enabled = false;
             cancelButton.HighEmphasis = true;
             cancelButton.Icon = null;
-            cancelButton.Location = new Point(282, 6);
+            cancelButton.Location = new Point(171, 6);
             cancelButton.Margin = new Padding(4, 6, 4, 6);
             cancelButton.MouseState = MaterialSkin.MouseState.HOVER;
             cancelButton.Name = "cancelButton";
@@ -518,6 +499,26 @@
             cancelButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             cancelButton.UseAccentColor = false;
             cancelButton.UseVisualStyleBackColor = true;
+            // 
+            // loanDetailsButton
+            // 
+            loanDetailsButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            loanDetailsButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            loanDetailsButton.Depth = 0;
+            loanDetailsButton.Font = new Font("Segoe UI", 12F);
+            loanDetailsButton.HighEmphasis = true;
+            loanDetailsButton.Icon = null;
+            loanDetailsButton.Location = new Point(275, 6);
+            loanDetailsButton.Margin = new Padding(4, 6, 4, 6);
+            loanDetailsButton.MouseState = MaterialSkin.MouseState.HOVER;
+            loanDetailsButton.Name = "loanDetailsButton";
+            loanDetailsButton.NoAccentTextColor = Color.Empty;
+            loanDetailsButton.Size = new Size(103, 36);
+            loanDetailsButton.TabIndex = 10;
+            loanDetailsButton.Text = "Visualizar";
+            loanDetailsButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            loanDetailsButton.UseAccentColor = false;
+            loanDetailsButton.UseVisualStyleBackColor = true;
             // 
             // viewLoansButton
             // 
@@ -531,7 +532,7 @@
             viewLoansButton.MouseState = MaterialSkin.MouseState.HOVER;
             viewLoansButton.Name = "viewLoansButton";
             viewLoansButton.NoAccentTextColor = Color.Empty;
-            viewLoansButton.Size = new Size(96, 31);
+            viewLoansButton.Size = new Size(96, 33);
             viewLoansButton.TabIndex = 2;
             viewLoansButton.Text = "Locações";
             viewLoansButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;

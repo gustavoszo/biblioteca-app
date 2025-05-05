@@ -24,7 +24,11 @@ namespace LibraryApp.Services
 
         public Loan FindLoanById(int idLoan)
         {
-            return _dbContext.Loans.FirstOrDefault(l => l.Id == idLoan);
+            return _dbContext.Loans
+                .Include(l => l.LoanBooks)
+                .ThenInclude(lb => lb.Book)
+                .Include(l => l.Client)
+                .FirstOrDefault(l => l.Id == idLoan);
         }
 
         public List<Loan> GetAllLoans()
