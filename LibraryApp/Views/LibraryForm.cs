@@ -171,16 +171,25 @@ namespace LibraryApp
         private void LoanDetailsButton_Click(object? sender, EventArgs e)
         {
             StringBuilder sb = new StringBuilder();
-
             Book book;
-            foreach (var loanBook in _loanBooks)
+
+            if (_loanBooks.Count > 0)
             {
-                book = _books.FirstOrDefault(b => b.Id == loanBook.BookId);
-                sb.AppendLine($"Livro: {book.Title}\nQuantidade: {loanBook.Quantity}\n");
+                sb.AppendLine("LIVROS RESERVADOS PARA ESTA LOCAÇÃO\n");
+                foreach (var loanBook in _loanBooks)
+                {
+                    book = _books.FirstOrDefault(b => b.Id == loanBook.BookId);
+                    sb.AppendLine($"Livro: {book.Title}\nQuantidade: {loanBook.Quantity}\n");
+                }
+            }
+            else
+            {
+                sb.Append("Você ainda não reservou livros para esta locação");
             }
 
-            MessageBox.Show(sb.ToString());
+            MessageBox.Show(sb.ToString(), "Cesta de livros");
         }
+
 
         private void ViewLoansButton_Click(object? sender, EventArgs e)
         {

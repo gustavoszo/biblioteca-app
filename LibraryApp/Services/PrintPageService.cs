@@ -20,10 +20,21 @@ namespace LibraryApp.Services
 
         public void PreviewPage()
         {
-            PrintPreviewDialog previewDialog = new PrintPreviewDialog();
-            previewDialog.Document = _printDocument;
-            previewDialog.WindowState = FormWindowState.Maximized;
-            previewDialog.ShowDialog();
+            using (PrintDialog printDialog = new PrintDialog())
+            {
+                printDialog.Document = _printDocument;
+
+                if (printDialog.ShowDialog() == DialogResult.OK)
+                {
+                    // Define a impressora selecionada
+                    _printDocument.PrinterSettings = printDialog.PrinterSettings;
+
+                    PrintPreviewDialog previewDialog = new PrintPreviewDialog();
+                    previewDialog.Document = _printDocument;
+                    previewDialog.WindowState = FormWindowState.Maximized;
+                    previewDialog.ShowDialog();
+                }
+            }
         }
 
         public void PrintDocument_PrintPage(object sender, PrintPageEventArgs e)
@@ -37,30 +48,33 @@ namespace LibraryApp.Services
             Brush brush = Brushes.Black;
 
             // Título
-            DrawTitle(e.Graphics, ref x, ref y, titleFont, brush);
-            y += titleFont.GetHeight(e.Graphics) + 20;
+            DrawTitle(e.Graphics, ref y, titleFont, brush);
+            y += titleFont.GetHeight(e.Graphics) + 50;
 
             // Seção do cliente
             DrawClientSection(e.Graphics, ref x, ref y, subtitleFont, contentFont, brush);
-            y += 10; // espaço extra entre seções
+            y += 50; // espaço extra entre seções
 
             // Seção dos livros
             DrawBookSection(e.Graphics, ref x, ref y, subtitleFont, contentFont, brush);
-            y += 10;
-            
+            y += 20;
+
             // Seção de datas
-            DrawDatesSection(e.Graphics, ref x, ref y, contentFont, brush);
-            y += 60;
+            DrawDatesSection(e.Graphics, ref x, ref y, subtitleFont, contentFont, brush);
+            y += 140;
 
-            DrawSignaturesSection(e.Graphics, ref x, ref y, contentFont, brush);
+            DrawSignaturesSection(e.Graphics, ref x, ref y, subtitleFont, contentFont, brush);
         }
 
-        private void DrawTitle(Graphics e, ref float x, ref float y, Font font, Brush brush)
+        private void DrawTitle(Graphics e, ref float y, Font font, Brush brush)
         {
-            e.DrawString("RELATÓRIO DE LOCAÇÃO", font, brush, x, y);
+            SizeF titleSize = e.MeasureString("RELATÓRIO DE LOCAÇÃO", font);
+            float centerX = e.VisibleClipBounds.Left + (e.VisibleClipBounds.Width - titleSize.Width) / 2;
+
+            e.DrawString("RELATÓRIO DE LOCAÇÃO", font, brush, centerX, y);
         }
 
-        private void DrawClientSection(Graphics e, ref float x, ref float y, Font subtitleFont, 
+        private void DrawClientSection(Graphics e, ref float x, ref float y, Font subtitleFont,
             Font contentFont, Brush brush)
         {
             e.DrawString("Dados do cliente", subtitleFont, brush, x, y);
@@ -82,18 +96,21 @@ namespace LibraryApp.Services
             y += subtitleFont.GetHeight(e) + 5;
 
             // Conteúdo do cliente (linha por linha)
-            var bookLines = BuildDocumentBooksContent().Split('\n');
+            var bookLines = BuildDocumentBooksContent().Split("\n\n");
             foreach (var book in bookLines)
             {
                 e.DrawString(book.Trim(), contentFont, brush, x, y);
-                y += contentFont.GetHeight(e) + 2;
+                y += contentFont.GetHeight(e) + 40;
             }
         }
 
         private void DrawDatesSection(Graphics e, ref float x, ref float y,
-         Font contentFont, Brush brush)
+         Font subtitleFont, Font contentFont, Brush brush)
         {
-            var dateLoanLine = $"Data de empréstimo: {Loan.DateLoan}";
+            e.DrawString("Datas", subtitleFont, brush, x, y);
+            y += subtitleFont.GetHeight(e) + 5;
+
+            var dateLoanLine = $"Data de empréstimo: {Loan.DateLoan.ToShortDateString()} às {Loan.DateLoan.ToShortTimeString()}";
             e.DrawString(dateLoanLine, contentFont, brush, x, y);
             y += contentFont.GetHeight(e) + 2;
 
@@ -103,18 +120,21 @@ namespace LibraryApp.Services
         }
 
         private void DrawSignaturesSection(Graphics e, ref float x, ref float y,
-            Font contentFont, Brush brush)
+            Font subtitleFont, Font contentFont, Brush brush)
         {
-            e.DrawString("Assinatura do cliente: ____________________________", contentFont, brush, x, y);
-            y += contentFont.GetHeight(e) + 40;
+            e.DrawString("Assinaturas", subtitleFont, brush, x, y);
+            y += subtitleFont.GetHeight(e) + 10;
 
-            e.DrawString("Assinatura da locadora: __________________________", contentFont, brush, x, y);
+            e.DrawString("Assinatura do cliente: ___________________________________", contentFont, brush, x, y);
+            y += contentFont.GetHeight(e) + 50;
+
+            e.DrawString("Assinatura da locadora: _________________________________", contentFont, brush, x, y);
         }
 
         private string BuildDocumentClientContent()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"Cliente: {Loan.Client.Name}");
+            sb.AppendLine($"Nome: {Loan.Client.Name}");
             sb.AppendLine($"Documento: {Loan.DocumentClient}");
             sb.AppendLine($"Telefone: {Loan.Client.Phone}");
             return sb.ToString();
@@ -125,7 +145,7 @@ namespace LibraryApp.Services
             StringBuilder sb = new StringBuilder();
             foreach (var loanBook in Loan.LoanBooks)
             {
-                sb.AppendLine($" - {loanBook.Book.Title} (Autor: {loanBook.Book.Author})");
+                sb.AppendLine($" - {loanBook.Book.Title} (Autor: {loanBook.Book.Author})\n Quantidade: {loanBook.Quantity}\n\n");
             }
             return sb.ToString();
         }

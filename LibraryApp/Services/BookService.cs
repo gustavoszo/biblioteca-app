@@ -17,6 +17,9 @@ namespace LibraryApp.Services
 
         public void CreateBook(Book book)
         {
+            if (FindBookByISBN(book.ISBN) != null)
+                throw new BookValidationException($"Já existe um livro com o ISBN '{book.ISBN}'"); 
+
             book.QuantityAvailable = book.Total;
 
             _dbContext.Books.Add(book);

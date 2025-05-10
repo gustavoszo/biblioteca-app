@@ -90,10 +90,15 @@ namespace LibraryApp.Views
 
             StringBuilder sb = new StringBuilder();
 
-            foreach (var loanBook in loan.LoanBooks)
-                sb.AppendLine($"Livro: {loanBook.Book.Title}\nQuantidade: {loanBook.Quantity}\n");
+            for (int i = 0; i < loan.LoanBooks.Count; i++)
+            {
+                sb.AppendLine($"Livro: {loan.LoanBooks.ElementAt(i).Book.Title}\nQuantidade: {loan.LoanBooks.ElementAt(i).Quantity}");
+                if (i < loan.LoanBooks.Count - 1)
+                    sb.AppendLine();
+            }
 
-            MessageBox.Show(sb.ToString());
+            MessageBox.Show(sb.ToString(), "Livros emprestados");
         }
+
     }
 }
