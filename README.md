@@ -34,3 +34,8 @@ O projeto é um aplicativo desenvolvido em Windows Forms para auxiliar locadoras
  * WinForms
  * EF Core
  * MySQL
+
+![image](https://github.com/user-attachments/assets/e8d04fd5-9ef1-436e-9b86-a5d73511bf2a)
+
+
+
