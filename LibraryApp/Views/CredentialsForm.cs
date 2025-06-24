@@ -70,5 +70,6 @@ namespace LibraryApp.Views
         {
             MessageBox.Show(message, "Registrar usuário");
         }
+
     }
 }

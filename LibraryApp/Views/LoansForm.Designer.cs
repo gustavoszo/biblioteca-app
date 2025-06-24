@@ -37,9 +37,6 @@
             tableLayoutPanel2 = new TableLayoutPanel();
             tableLayoutPanel3 = new TableLayoutPanel();
             advancedDataGridView = new Zuby.ADGV.AdvancedDataGridView();
-            searchToolBar = new Zuby.ADGV.AdvancedDataGridViewSearchToolBar();
-            toolStrip1 = new ToolStrip();
-            closeButton = new ToolStripButton();
             NameColumn = new DataGridViewTextBoxColumn();
             DocumentColumn = new DataGridViewTextBoxColumn();
             idLoanColumn = new DataGridViewTextBoxColumn();
@@ -47,6 +44,9 @@
             returnDateColumn = new DataGridViewTextBoxColumn();
             booksColumn = new DataGridViewButtonColumn();
             returnColumn = new DataGridViewButtonColumn();
+            searchToolBar = new Zuby.ADGV.AdvancedDataGridViewSearchToolBar();
+            toolStrip1 = new ToolStrip();
+            closeButton = new ToolStripButton();
             tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)advancedDataGridView).BeginInit();
@@ -81,14 +81,13 @@
             tableLayoutPanel2.Controls.Add(toolStrip1, 0, 1);
             tableLayoutPanel2.Dock = DockStyle.Fill;
             tableLayoutPanel2.Font = new Font("Segoe UI", 9F);
-            tableLayoutPanel2.Location = new Point(3, 64);
-            tableLayoutPanel2.Margin = new Padding(3, 2, 3, 2);
+            tableLayoutPanel2.Location = new Point(3, 85);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 2;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 92.59259F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 7.40740728F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 22F));
-            tableLayoutPanel2.Size = new Size(833, 378);
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 29F));
+            tableLayoutPanel2.Size = new Size(953, 504);
             tableLayoutPanel2.TabIndex = 1;
             // 
             // tableLayoutPanel3
@@ -100,13 +99,12 @@
             tableLayoutPanel3.Controls.Add(advancedDataGridView, 0, 1);
             tableLayoutPanel3.Controls.Add(searchToolBar, 0, 0);
             tableLayoutPanel3.Dock = DockStyle.Fill;
-            tableLayoutPanel3.Location = new Point(3, 2);
-            tableLayoutPanel3.Margin = new Padding(3, 2, 3, 2);
+            tableLayoutPanel3.Location = new Point(3, 3);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 2;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 6.4837904F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 93.51621F));
-            tableLayoutPanel3.Size = new Size(827, 346);
+            tableLayoutPanel3.Size = new Size(947, 460);
             tableLayoutPanel3.TabIndex = 4;
             // 
             // advancedDataGridView
@@ -136,8 +134,7 @@
             advancedDataGridView.Dock = DockStyle.Fill;
             advancedDataGridView.FilterAndSortEnabled = true;
             advancedDataGridView.FilterStringChangedInvokeBeforeDatasourceUpdate = true;
-            advancedDataGridView.Location = new Point(4, 26);
-            advancedDataGridView.Margin = new Padding(3, 2, 3, 2);
+            advancedDataGridView.Location = new Point(4, 34);
             advancedDataGridView.MaxFilterButtonImageHeight = 23;
             advancedDataGridView.Name = "advancedDataGridView";
             advancedDataGridView.RightToLeft = RightToLeft.No;
@@ -154,44 +151,9 @@
             dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
             advancedDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle4;
             advancedDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            advancedDataGridView.Size = new Size(819, 317);
+            advancedDataGridView.Size = new Size(939, 422);
             advancedDataGridView.SortStringChangedInvokeBeforeDatasourceUpdate = true;
             advancedDataGridView.TabIndex = 4;
-            // 
-            // searchToolBar
-            // 
-            searchToolBar.AllowMerge = false;
-            searchToolBar.Dock = DockStyle.Fill;
-            searchToolBar.GripStyle = ToolStripGripStyle.Hidden;
-            searchToolBar.ImageScalingSize = new Size(20, 20);
-            searchToolBar.Location = new Point(1, 1);
-            searchToolBar.MaximumSize = new Size(0, 20);
-            searchToolBar.MinimumSize = new Size(0, 20);
-            searchToolBar.Name = "searchToolBar";
-            searchToolBar.RenderMode = ToolStripRenderMode.Professional;
-            searchToolBar.Size = new Size(825, 20);
-            searchToolBar.TabIndex = 0;
-            searchToolBar.Text = "advancedDataGridViewSearchToolBar1";
-            // 
-            // toolStrip1
-            // 
-            toolStrip1.Dock = DockStyle.Bottom;
-            toolStrip1.Items.AddRange(new ToolStripItem[] { closeButton });
-            toolStrip1.Location = new Point(0, 353);
-            toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(833, 25);
-            toolStrip1.TabIndex = 5;
-            toolStrip1.Text = "toolStrip1";
-            // 
-            // closeButton
-            // 
-            closeButton.Alignment = ToolStripItemAlignment.Right;
-            closeButton.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            closeButton.Image = (Image)resources.GetObject("closeButton.Image");
-            closeButton.ImageTransparentColor = Color.Magenta;
-            closeButton.Name = "closeButton";
-            closeButton.Size = new Size(46, 22);
-            closeButton.Text = "Fechar";
             // 
             // NameColumn
             // 
@@ -254,13 +216,52 @@
             returnColumn.Text = "Devolver";
             returnColumn.UseColumnTextForButtonValue = true;
             // 
+            // searchToolBar
+            // 
+            searchToolBar.AllowMerge = false;
+            searchToolBar.Dock = DockStyle.Fill;
+            searchToolBar.GripStyle = ToolStripGripStyle.Hidden;
+            searchToolBar.ImageScalingSize = new Size(20, 20);
+            searchToolBar.Location = new Point(1, 1);
+            searchToolBar.MaximumSize = new Size(0, 27);
+            searchToolBar.MinimumSize = new Size(0, 27);
+            searchToolBar.Name = "searchToolBar";
+            searchToolBar.RenderMode = ToolStripRenderMode.Professional;
+            searchToolBar.Size = new Size(945, 27);
+            searchToolBar.TabIndex = 0;
+            searchToolBar.Text = "advancedDataGridViewSearchToolBar1";
+            // 
+            // toolStrip1
+            // 
+            toolStrip1.Dock = DockStyle.Bottom;
+            toolStrip1.ImageScalingSize = new Size(20, 20);
+            toolStrip1.Items.AddRange(new ToolStripItem[] { closeButton });
+            toolStrip1.Location = new Point(0, 477);
+            toolStrip1.Name = "toolStrip1";
+            toolStrip1.Size = new Size(953, 27);
+            toolStrip1.TabIndex = 5;
+            toolStrip1.Text = "toolStrip1";
+            // 
+            // closeButton
+            // 
+            closeButton.Alignment = ToolStripItemAlignment.Right;
+            closeButton.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            closeButton.Image = (Image)resources.GetObject("closeButton.Image");
+            closeButton.ImageTransparentColor = Color.Magenta;
+            closeButton.Name = "closeButton";
+            closeButton.Size = new Size(56, 24);
+            closeButton.Text = "Fechar";
+            // 
             // LoansForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(839, 445);
+            ClientSize = new Size(959, 593);
             Controls.Add(tableLayoutPanel2);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "LoansForm";
+            Padding = new Padding(3, 85, 3, 4);
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Empréstimos em andamento";
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
